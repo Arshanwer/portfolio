@@ -4,8 +4,8 @@
 
 1. ✅ Theme system refit + type scale tokens — `b31a8ff`
 2. ✅ Header + Footer + layout shell + `/work` and `/photography` stubs — `6c7573a`
-3. 🟡 Home Hero — next
-4. 🔲 Home About + Experience timeline
+3. ✅ Home Hero — `eea25da`
+4. 🟡 Home About + Experience timeline — next
 5. 🔲 Home Contact strip
 6. 🔲 `/work` index
 7. 🔲 `/work/pixxellent` case study
@@ -88,9 +88,9 @@
 - ✅ Server-component compatibility — removed orphan `"use client"` from `Icon.tsx` per archived warning (it was breaking server-rendered Footer)
 - ✅ Resume PDF wired — `reference/ArshadAnwerResume.pdf` copied to `public/resume.pdf`, served at `/resume.pdf` (200, application/pdf, 153 KB)
 
-**Home Page (`/`)**
+**Home Page (`/`)** — Hero ✅ `eea25da`
 
-- 🔲 Hero — oversized name (Geist Sans heavy), role, location, one-line summary; type fills the space, no headshot
+- ✅ Hero — `Arshad Anwer` in Geist Sans 900 at `text-display-hero` clamp(56px → 144px); role + location in Geist Mono; one-line summary with accent underline on "infrastructure" as the earned accent moment; no headshot; type fills the space at all breakpoints (375 wraps name to 2 lines, role to 2 lines via responsive `<br>`)
 - 🔲 About — first-person, conversational voice
 - 🔲 Experience timeline — reverse-chrono cards (Totara DevOps, Totara FE, Qijang, SEB) with role, dates, outcome bullets, tech chips
 - 🔲 Contact strip — email, GitHub, LinkedIn, location
@@ -167,7 +167,7 @@
 
 ## Current Status
 
-### Project Phase: **Phase 2 — v2 Visual Rebuild & Site Structure** (in progress — 2 of 10 chunks done)
+### Project Phase: **Phase 2 — v2 Visual Rebuild & Site Structure** (in progress — 3 of 10 chunks done)
 
 **Completion Overview**
 
@@ -179,8 +179,8 @@
 
 ### Next Immediate Action
 
-**Chunk 3 — Home Hero** (ready to begin)
-Oversized Geist Sans heavy name using `text-display-hero` token (`clamp(3.5rem, 14vw, 9rem)`), role + location + one-line summary in Geist Mono, one earned accent moment, no headshot. Verify at 375 that the display type stays confident — let it overhang or rebalance if needed. Open question to confirm at chunk start: the one-line summary copy — draft from resume material or have Arshad supply it.
+**Chunk 4 — Home About + Experience timeline** (ready to begin)
+About: 2–3 first-person paragraphs in Geist Mono prose (15–16px, line-height 1.6), Education line (BSc Hons Software Engineering, Staffordshire 2013) folded in. Experience timeline: reverse-chrono entries — Totara DevOps (Jan 2025 – present), Totara FE (Feb 2020 – Jan 2025), Qijang Senior SE (May 2019 – Jan 2020), SEB Software Developer (Mar 2015 – May 2019). Each entry: role, dates, 2–4 outcome bullets pulled from the resume, tech chips. Build a small `Chip` component. Hover/focus dim siblings to emphasize the active entry. Open questions at chunk start: how aggressive should the outcome bullets be (resume verbatim vs. trimmed for screen-reading); is dim-on-hover worth implementing or noise.
 
 ## Known Issues
 
@@ -300,7 +300,7 @@ Oversized Geist Sans heavy name using `text-display-hero` token (`clamp(3.5rem, 
 
 ## Next Development Session Goals
 
-1.  **Chunk 3 — Home Hero**: oversized Geist Sans heavy name using `text-display-hero`, role + location + one-line summary in Geist Mono, one earned accent moment, no headshot. Resolve one-liner copy source at chunk start.
-2.  **Chunk 4 — About + Experience timeline**: first-person About (Education line folded in), reverse-chrono cards (Totara DevOps → Totara FE → Qijang → SEB) with role, dates, outcome bullets, tech chips. Build `Chip` component during this chunk.
-3.  **Chunk 5 — Home Contact strip**: email + GitHub + LinkedIn + location above the global footer.
+1.  **Chunk 4 — About + Experience timeline**: first-person About (Education line folded in), reverse-chrono cards (Totara DevOps → Totara FE → Qijang → SEB) with role, dates, outcome bullets, tech chips. Build `Chip` component during this chunk.
+2.  **Chunk 5 — Home Contact strip**: email + GitHub + LinkedIn + location above the global footer.
+3.  **Chunk 6 — `/work` index**: replace stub with Pixxellent featured card. Set up routing to `/work/pixxellent`.
 4.  **End-of-session protocol**: commit chunk → confirm visually → update this file → commit `chore: update progress.md` → stop.
