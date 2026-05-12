@@ -2,184 +2,93 @@
 
 ## Current Work Focus
 
-**Theme System Implementation - COMPLETE**
-Successfully implemented a comprehensive dark/light theme system with SCSS integration. The project now has a fully functional themed homepage with manual toggle, system preference detection, and persistent theme storage.
+**Phase 2 — v2 Visual Rebuild & Site Structure** (about to begin)
 
-**Memory Bank Documentation - COMPLETE**
-Comprehensive project documentation established and updated to reflect the current implementation state including theme system architecture and styling patterns.
+Direction A (editorial dossier) was attempted in early Phase 2 and abandoned — too formal, too classical, didn't match the actual taste once rendered. After reviewing Josh Comeau, Maggie Appleton, and two Dribbble references, Direction v2 (modern-developer with personality, mono-leaning, sage-lime accent) was locked. Visual rebuild now begins.
 
 ## Recent Changes
 
-**Theme System Implementation (Latest)**
-
--   **Tailwind v4 Integration**: Using `@import "tailwindcss"` in `src/styles/globals.css` (Tailwind v4 syntax)
--   **Comprehensive Theme Variables**: Implemented light/dark color palettes with CSS custom properties
--   **Tailwind Integration**: Added `@theme inline` tokens mapping CSS variables to Tailwind utilities
--   **Theme Toggle Component**: Created client-side ThemeToggle with localStorage persistence and system preference detection
--   **No-FOUC Prevention**: Added inline script in layout.tsx to prevent theme flash on load
--   **Styled Homepage**: Replaced default content with comprehensive themed landing page showcasing features, color palette, and responsive design
--   **Hydration Warning Fix**: Added suppressHydrationWarning to silence theme class mismatch
-
-**Memory Bank Updates (Complete)**
-
--   `MemoryBank.md`: Added theme system overview with design tokens and implementation strategy
--   `techContext.md`: Updated with global CSS, theme variables, and current project structure
--   `systemPatterns.md`: Added theme patterns, component utility classes, and component architecture
--   `activeContext.md`: Updated to reflect current theme implementation state
--   `progress.md`: Marked theme implementation milestone as complete
+- Direction A attempted and rejected; to be archived on branch `archive/direction-a-editorial`
+- Direction v2 locked: palette, typography, IA, and hard constraints all decided
+- progress.md rewritten to reflect v2
+- design-direction.md to be created as canonical v2 spec
+- CLAUDE.md to be established at project root
 
 ## Next Steps
 
-**Immediate Priorities**
-
-1. **Content Strategy**: Define portfolio projects, bio content, and professional information to showcase
-2. **Navigation Structure**: Create header with navigation menu and routing to key pages (About, Portfolio, Contact)
-3. **Portfolio Showcase**: Design and implement project card components with case study details
-4. **Content Pages**: Create About page with bio/skills and Contact page with form
-5. **SEO Optimization**: Add proper meta tags, structured data, and sitemap
-
-**Development Roadmap**
-
--   **Phase 2**: Site structure and navigation setup ⬅️ **CURRENT PHASE**
--   **Phase 3**: Portfolio content showcase and case studies
--   **Phase 4**: Contact functionality and social media integration
--   **Phase 5**: Performance optimization and deployment
+1. Audit & reconcile repo state; archive Direction A on branch
+2. Theme refit — replace globals.css palette with v2 colors; verify AA contrast
+3. Resolve Phase 1 cleanup items (duplicate ThemeToggle, hard-coded Arial font, triple-defined theme vars, unused sass dep)
+4. Header + Footer — multi-page nav (Home, Work, Photography), no avatar
+5. Home hero — oversized typography (Geist Sans heavy), no headshot
+6. Home About + Experience timeline
+7. `/work` index + `/work/pixxellent` case study
+8. `/photography` masonry gallery
+9. Update progress.md at end of session
 
 ## Active Decisions & Considerations
 
-**Architecture Decisions**
+**Locked**
 
--   **Confirmed**: Using Next.js App Router for all routing and layouts
--   **Confirmed**: Server Components as default, Client Components only when needed (ThemeToggle is client)
--   **Confirmed**: Global CSS with TailwindCSS v4 integration via @import "tailwindcss"
--   **Confirmed**: CSS custom properties for comprehensive theming system
--   **Under consideration**: State management solution (Context API vs Zustand vs none)
+- Multi-page IA: `/`, `/work`, `/work/[slug]`, `/photography`
+- Palette — Dark: bg #0B0B0C / text #EAEAEA / accent #B5D827 (sage-lime); Light: bg #F8F5EE / text #1A1A1A / accent #3F5C1C (forest)
+- Typography: Geist Mono (body, nav, labels), Geist Sans heavy (hero + section display). No new fonts.
+- No headshot anywhere. Type fills the hero.
+- One accent doing real work; decorative elements earned not sprinkled; motion purposeful only.
 
-**Design Decisions**
+**Under consideration**
 
--   **Confirmed**: Mobile-first responsive design approach
--   **Confirmed**: Geist font family for typography
--   **Confirmed**: Blue/orange light theme, light blue/amber dark theme color palette
--   **Confirmed**: Class-based theme switching (html.dark) over media query only
--   **Under consideration**: Animation library (Framer Motion vs CSS transitions)
-
-**Technical Decisions**
-
--   **Confirmed**: TypeScript strict mode for all development
--   **Confirmed**: ESLint with Next.js configuration for code quality
--   **Confirmed**: Component utility classes organized in global CSS
--   **Confirmed**: localStorage for theme persistence with system preference fallback
--   **Under consideration**: Testing strategy (Jest + RTL vs Playwright vs both)
--   **Under consideration**: Analytics integration (Vercel Analytics vs Google Analytics)
+- State management (likely none needed for current scope)
+- Animation library (CSS transitions first, Framer Motion only if a specific interaction warrants it)
+- Testing strategy
+- Analytics integration
 
 ## Important Patterns & Preferences
 
 **Code Organization**
 
--   Server Components by default, explicit "use client" when needed (ThemeToggle example)
--   PascalCase for components, camelCase for utilities
--   Path aliases (@/\*) for clean imports
--   Early returns for conditional rendering
--   Strict TypeScript typing for all props and functions
+- Server Components by default, "use client" only when needed (ThemeToggle)
+- PascalCase for components, camelCase for utilities
+- Path aliases (@/\*) for clean imports
+- Strict TypeScript typing for all props and functions
 
 **Styling Patterns**
 
--   Global CSS in `src/styles/globals.css`
--   CSS custom properties for all theme values
--   `@theme inline` mapping for Tailwind token integration
--   Component utility classes for styled elements (.btn-\*, .card)
--   Utility-first approach with Tailwind classes for layout
+- Global CSS in `src/styles/globals.css`
+- CSS custom properties for all theme values
+- `@theme inline` mapping for Tailwind token integration
+- Utility-first Tailwind for layout, custom utility classes for repeated patterns
 
 **Theme System Patterns**
 
--   CSS variables define all colors, spacing, shadows
--   `html.dark` class overrides for theme switching
--   localStorage persistence with system preference detection
--   No-FOUC inline script in layout.tsx
--   suppressHydrationWarning for theme class hydration
-
-**File Structure Patterns**
-
--   Next.js App Router file conventions (page.tsx, layout.tsx, etc.)
--   Components in `src/components/` with clear naming
--   Global styles in `src/styles/globals.css` with Tailwind v4
--   Memory-bank documentation for project continuity
--   Public assets organized by type and usage
-
-**Development Workflow**
-
--   Document-first approach through memory-bank system
--   Theme-aware development with CSS variable usage
--   Test locally before any major changes
--   Maintain clean git history with meaningful commits
--   Regular documentation updates as project evolves
-
-## Learnings & Project Insights
-
-**Theme System Implementation**
-
--   Tailwind v4 with `@import "tailwindcss"` provides modern, streamlined integration
--   CSS custom properties provide excellent flexibility for comprehensive theming
--   `@theme inline` tokens enable using CSS variables as Tailwind utility classes
--   Class-based theme switching (html.dark) is more reliable than media queries alone
--   Inline script approach effectively prevents FOUC without complex SSR setup
--   suppressHydrationWarning is necessary when pre-setting theme classes
-
-**Technical Insights**
-
--   Next.js App Router handles client components (ThemeToggle) within server component architecture elegantly
--   Component utility classes in global CSS maintain clean organization and maintainability
--   localStorage + system preference creates ideal theme persistence strategy
--   Comprehensive CSS variables enable consistent theming across all components
--   Memory-bank system enables seamless project continuity across development sessions
-
-**Development Process**
-
--   Implementing theme system early provides strong visual foundation for all future components
--   Tailwind v4 migration was straightforward and enhanced styling capabilities
--   Testing theme switching in browser confirmed implementation quality
--   Documentation-first approach prevents knowledge loss during complex implementations
--   Clear color palette definitions enable consistent design decisions
+- CSS variables define colors, spacing, shadows
+- `html.dark` class overrides for theme switching
+- localStorage persistence with system preference fallback
+- No-FOUC inline script in layout.tsx
+- suppressHydrationWarning for theme class hydration
 
 ## Current Challenges
 
+**Content Pending**
+
+- Pixxellent case study content (problem, approach, screenshots)
+- Photography assets and any category grouping
+- First-person voice copy for About section
+
 **No Active Technical Challenges**
-Theme system is fully functional with no technical issues. All development tools, theme switching, SCSS compilation, and Tailwind integration working correctly.
 
-**Content Development Needs**
-
--   Portfolio projects content and case studies need to be defined
--   Professional bio, skills, and experience content needs preparation
--   Contact information and social media links need organization
--   Project screenshots and media assets need optimization
-
-**Information Architecture Planning**
-
--   Navigation menu structure and page hierarchy needs definition
--   Portfolio project organization and filtering strategy needs design
--   SEO strategy and meta tag structure needs planning
+Theme system architecture is sound; palette swap is mechanical. All dev tooling working correctly.
 
 ## Context Notes
 
 **Project Readiness**
-Project is ready for Phase 2 development. Theme system provides solid foundation for all future components. Tailwind v4/CSS integration enables efficient styling. Navigation and content structure is the logical next focus.
 
-**Theme System Status**
-Comprehensive theme implementation complete with:
-
--   Working light/dark mode toggle with persistence
--   Tailwind v4 integration with global CSS
--   No-FOUC theme loading
--   Themed homepage showcasing capabilities
--   Clean, maintainable CSS variable architecture
+Ready for Phase 2 visual rebuild. Theme architecture stays; only palette and visual layer change.
 
 **Memory Bank Status**
-All memory-bank documentation updated to reflect theme system implementation. Files now contain current technical state, architectural decisions, and established patterns for future development reference.
+
+All files reconciled to v2 direction. design-direction.md is the canonical spec for the visual system; progress.md tracks chunk-level progress.
 
 **Next Session Preparation**
-Future sessions should focus on:
 
-1. Content strategy and portfolio project definition
-2. Navigation structure and page routing setup
-3. Component library expansion beyond theme system
-4. SEO optimization and meta tag implementation
+Open a fresh Claude Code session, paste the pivot prompt, work through Steps 1–5 in order. Don't skip pause points.
