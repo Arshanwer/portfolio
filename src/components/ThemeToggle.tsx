@@ -43,8 +43,8 @@ export default function ThemeToggle() {
 	return (
 		<button
 			onClick={toggleTheme}
-			className="theme-toggle"
 			aria-label="Toggle theme"
+			className="inline-flex h-9 w-9 items-center justify-center rounded-sm text-foreground transition-colors duration-200 hover:text-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent motion-reduce:transition-none"
 		>
 			{isDark ? (
 				<Icon icon={Sun} aria-hidden="true" />
