@@ -38,14 +38,6 @@ Single-page, content-driven, design-restrained.
 - **End of session**: stop coding. Commit anything uncommitted (or stash with a clear `wip:` message). Update `memory-bank/progress.md` — mark completed chunks ✅, mark the current chunk 🟡 with what's done / what's next / any open decision, add notes for the next session. Commit the progress update alone as `chore: update progress.md`.
 - Resume next session by opening a fresh Claude Code session and pasting: *"resume — follow the session protocol in CLAUDE.md."* Trust the docs, don't try to carry state across sessions.
 
-## Cleanup items (from Phase 1 audit — do early)
-
-- Remove duplicate `<ThemeToggle>` mount in `app/page.tsx`; keep only in `Header.tsx`
-- Remove hard-coded `Arial, Helvetica, sans-serif` in `globals.css:139` so the Geist variable takes over
-- Collapse the three theme-token blocks (`:root`, `@media (prefers-color-scheme)`, `html.dark` / `html:not(.dark)`) into one source
-- Remove `sass` from devDependencies (unused, no `.scss` files exist)
-- Verify GitHub handle: resume shows `Arshanwer` — confirm before linking
-
 ## Don't
 
 - No new dependencies without asking
