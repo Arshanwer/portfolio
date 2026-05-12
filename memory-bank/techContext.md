@@ -28,7 +28,7 @@
 ### Scripts Available
 
 ```bash
-npm run dev    # Development server (http://localhost:3220)
+npm run dev    # Development server (http://localhost:3210)
 npm run build  # Production build
 npm run start  # Start production server
 npm run lint   # Run ESLint

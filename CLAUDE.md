@@ -10,7 +10,7 @@ Single-page, content-driven, design-restrained.
 - Icons: lucide-react through `src/components/Icon.tsx` wrapper (never import lucide directly)
 - Theme: CSS custom properties + class strategy (`html.dark` / `html:not(.dark)`), no-FOUC script in `app/layout.tsx`
 - No animation library yet; add only with approval
-- Dev: `npm run dev` (port 3220)
+- Dev: `npm run dev` (port 3210)
 
 ## Source of truth
 
