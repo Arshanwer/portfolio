@@ -1,0 +1,53 @@
+# Portfolio — Project Context
+
+Personal portfolio for Arshad Anwer (Senior Software Engineer, Wellington NZ).
+Single-page, content-driven, design-restrained.
+
+## Stack
+
+- Next.js 15 (App Router) + React 19 + TypeScript (strict)
+- Tailwind CSS v4 via `@import "tailwindcss"` in `src/styles/globals.css` — NOT v3 config-based
+- Icons: lucide-react through `src/components/Icon.tsx` wrapper (never import lucide directly)
+- Theme: CSS custom properties + class strategy (`html.dark` / `html:not(.dark)`), no-FOUC script in `app/layout.tsx`
+- No animation library yet; add only with approval
+- Dev: `npm run dev` (port 3210)
+
+## Source of truth
+
+- Content: `./reference/ArshadAnwerResume.pdf` — when this changes, update affected sections
+- Design direction: **[TBD — pick A / B / C from Phase 1]**
+    - A = Editorial dossier (recruiter-first, two-column sticky)
+    - B = Long-form first-person (peer-first, narrow column)
+    - C = Platform-engineer-in-production (positioning-forward, mono-accented)
+
+## Design principles
+
+- Restraint is the primary tool. Whitespace, type, and one accent do most of the work.
+- Structure must support both a 7-second skim and a full read.
+- Motion is purposeful or absent. No parallax, no decorative animation.
+- The experience timeline is the load-bearing element — design it first, well.
+
+## Conventions
+
+- Components: PascalCase, one per file in `src/components/`
+- Section components use Tailwind classes inline; shared utilities live in `globals.css`
+- Mobile-first; verify at 375 / 768 / 1280
+- Semantic HTML, WCAG 2.1 AA contrast, keyboard accessible (Arshad ships AA professionally — match that bar)
+- TypeScript strict; no `any` without a comment explaining why
+
+## Cleanup items (from Phase 1 audit — do early)
+
+- Remove duplicate `<ThemeToggle>` mount in `app/page.tsx`; keep only in `Header.tsx`
+- Remove hard-coded `Arial, Helvetica, sans-serif` in `globals.css:139` so the Geist variable takes over
+- Collapse the three theme-token blocks (`:root`, `@media (prefers-color-scheme)`, `html.dark` / `html:not(.dark)`) into one source
+- Remove `sass` from devDependencies (unused, no `.scss` files exist)
+- Verify GitHub handle: resume shows `Arshanwer` — confirm before linking
+
+## Don't
+
+- No new dependencies without asking
+- Don't push to remote; don't force-push; don't touch main history
+- Don't delete `./reference/`, `./memory-bank/`, or `./.clinerules/`
+- Don't change the theme architecture (CSS vars + class strategy) without flagging
+- No analytics, tracking, or third-party scripts
+- Don't invent content — pull from the resume only
