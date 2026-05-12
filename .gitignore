@@ -42,3 +42,4 @@ next-env.d.ts
 
 # playwright diagnostic artifacts
 .playwright-mcp/
+/chunk*-*.png
