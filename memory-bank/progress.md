@@ -1,12 +1,25 @@
 # Progress
 
+## v2 Build Chunks
+
+1. ✅ Theme system refit + type scale tokens — `b31a8ff`
+2. 🟡 Header + Footer + Layout shell — next
+3. 🔲 Home Hero
+4. 🔲 Home About + Experience timeline
+5. 🔲 Home Contact strip
+6. 🔲 `/work` index
+7. 🔲 `/work/pixxellent` case study
+8. 🔲 `/photography` gallery
+9. 🔲 Responsive + accessibility pass
+10. 🔲 Polish + motion + final accent audit
+
 ## What Works
 
 ### Complete & Functional
 
 **Development Environment**
 
-- ✅ Next.js 15.5.4 development server runs successfully on localhost:3210
+- ✅ Next.js 15.5.4 development server runs successfully on localhost:3220
 - ✅ TypeScript compilation works without errors
 - ✅ TailwindCSS processing and styling system operational
 - ✅ ESLint code linting configured and functional
@@ -33,8 +46,8 @@
 - ✅ Complete memory-bank documentation system established
 - ✅ Project context, technical details, and patterns documented
 - ✅ Clear development roadmap and phase planning
-- 🟡 Design direction v2 to be captured in `memory-bank/design-direction.md` (Step 4 of pivot prompt)
-- 🟡 CLAUDE.md to be established at project root for session-to-session continuity (Step 4 of pivot prompt)
+- ✅ Design direction v2 captured in `memory-bank/design-direction.md` (canonical visual spec)
+- ✅ `CLAUDE.md` at project root — session protocol, stack, conventions, design-direction pointer
 
 **Theme System Architecture**
 
@@ -58,12 +71,12 @@
 
 ### Phase 2: v2 Visual Rebuild & Site Structure
 
-**Theme System Refit**
+**Theme System Refit** — Chunk 1 ✅ `b31a8ff`
 
-- 🔲 Replace current palette in globals.css with v2 palette
-- 🔲 Verify WCAG AA contrast on accent in both modes
-- 🔲 Define typography scale (Geist Mono body sizes, Geist Sans display clamp range 56px → 144px)
-- 🔲 Resolve Phase 1 cleanup items (see Known Issues)
+- ✅ Replaced palette in globals.css with v2 (sage-lime / forest)
+- ✅ WCAG AA verified — accent on bg: dark ~12.0, light ~7.0; text/muted all pass
+- ✅ Typography scale tokens defined — `--display-hero` `clamp(3.5rem, 14vw, 9rem)`, `--display-section` `clamp(2.5rem, 6vw, 4.5rem)`
+- ✅ Legacy purge — removed `--primary`/`--secondary`/`--warning`/`--error`/`--success`, `--color-*` aliases, `.card`/`.btn-*`/`.text-gradient`/`.theme-toggle`
 
 **Layout Components**
 
@@ -151,30 +164,30 @@
 
 ## Current Status
 
-### Project Phase: **Phase 2 — v2 Visual Rebuild & Site Structure** (about to begin)
+### Project Phase: **Phase 2 — v2 Visual Rebuild & Site Structure** (in progress — chunk 1 of 10 done)
 
 **Completion Overview**
 
-- **Infrastructure**: 100% complete — All development tools and configurations working
-- **Theme System Architecture**: 100% complete — CSS vars + class strategy in place; palette pending refit to v2
-- **Documentation**: design-direction.md and CLAUDE.md pending creation in Step 4 of pivot prompt
-- **Code Quality**: 100% complete — TypeScript, ESLint, and CSS standards in place
-- **Design Direction**: 100% locked — v2 selected after Direction A attempt
+- **Infrastructure**: 100% complete
+- **Theme System**: 100% complete — palette swapped to v2, type scale tokens in place, legacy purged
+- **Documentation**: 100% complete — `CLAUDE.md` + `memory-bank/design-direction.md` written and committed
+- **Code Quality**: 100% complete — TypeScript strict, ESLint clean, `npm run build` passes
+- **Design Direction**: 100% locked — v2
 
 ### Next Immediate Action
 
-**Phase 2 — Theme refit + Layout components** (Ready to Begin)
-First chunk: palette swap in globals.css + cleanup items from Phase 1 audit. Then Header + Footer, then Home hero with oversized typography.
+**Chunk 2 — Header + Footer + Layout shell** (ready to begin)
+Multi-page nav (Home, Work, Photography) mounted in `app/layout.tsx`, theme toggle integrated, mobile menu (no animation library), Footer with location + social + resume PDF link. Open question to confirm at chunk start: stub `/work` and `/photography` routes so nav links don't 404.
 
 ## Known Issues
 
 ### Outstanding Cleanup (from Phase 1 audit)
 
-- 🔲 Duplicate `<ThemeToggle>` mount in `app/page.tsx` — remove, keep only in `Header.tsx`
-- 🔲 Hard-coded `Arial, Helvetica, sans-serif` in `globals.css:139` — remove so Geist variable takes over
-- 🔲 Theme tokens defined three times (`:root`, `@media (prefers-color-scheme)`, `html.dark` / `html:not(.dark)`) — collapse into single source
-- 🔲 `sass` in devDependencies — remove, unused, no `.scss` files exist
-- 🔲 GitHub handle on resume shows `Arshanwer` — verify spelling before adding to footer
+- ✅ Duplicate `<ThemeToggle>` mount in `app/page.tsx` — resolved in `70d1087`
+- ✅ Hard-coded `Arial, Helvetica, sans-serif` — resolved in `70d1087`; body now defaults to Geist Mono per v2
+- ✅ Theme tokens — collapsed to single `:root` + `html.dark` pair in `b31a8ff`
+- ✅ `sass` in devDependencies — removed in `70d1087`
+- 🔲 GitHub handle verification (`Arshanwer`) — tracked under Phase 4 / Content Integration
 
 ### No Current Technical Issues
 
@@ -186,10 +199,10 @@ First chunk: palette swap in globals.css + cleanup items from Phase 1 audit. The
 
 ### Documentation Status
 
-- ✅ All memory-bank files contain comprehensive project information
-- 🟡 `memory-bank/design-direction.md` — pending creation in Step 4 of pivot prompt
-- 🟡 `archive/direction-a-editorial` branch — pending creation in Step 2 of pivot prompt
-- 🟡 `CLAUDE.md` at project root — pending creation in Step 4 of pivot prompt
+- ✅ All memory-bank files contain comprehensive v2 project information
+- ✅ `memory-bank/design-direction.md` written and committed (`a421ef2`) — canonical v2 visual spec
+- ✅ `archive/direction-a-editorial` branch created at the former main HEAD (`74766b7`) — Direction A preserved, recoverable
+- ✅ `CLAUDE.md` at project root — session protocol, stack, conventions, v2 direction summary
 
 ## Evolution of Project Decisions
 
@@ -227,7 +240,7 @@ First chunk: palette swap in globals.css + cleanup items from Phase 1 audit. The
 - Visual language: two-column sticky sidebar, serif hero, dark navy background, mono uppercase nav labels, single amber accent
 - Reference: Brittany Chiang sticky-sidebar pattern + editorial typography
 - Rejected because: read as too formal and classical for the engineer-with-personality positioning; serif at masthead scale felt magazine-coded rather than modern; cold palette lacked warmth
-- Disposition: to be archived on branch `archive/direction-a-editorial` (Step 2 of pivot prompt) — preserved, not deleted; lessons to be captured in `memory-bank/design-direction.md`
+- Disposition: archived on branch `archive/direction-a-editorial` at `74766b7` (former main HEAD) — preserved, not deleted; lessons captured in `memory-bank/design-direction.md`
 
 **Direction v2 — Modern-Developer with Personality (locked)**
 
@@ -235,7 +248,7 @@ First chunk: palette swap in globals.css + cleanup items from Phase 1 audit. The
 - Visual language: mono-leaning base (Geist Mono body), bold sans display moments (Geist Sans heavy at hero scale), sage-lime accent on warm near-black (dark), forest accent on warm off-white (light)
 - Information architecture: multi-page (`/`, `/work`, `/work/[slug]`, `/photography`)
 - Hard constraints: no headshot, one accent doing real work, decorative elements earned, motion purposeful only
-- Full specification: to be written to `memory-bank/design-direction.md` in Step 4 of pivot prompt
+- Full specification: `memory-bank/design-direction.md` — references, palette, typography, layout patterns, rejected directions
 
 ### Locked Decisions
 
@@ -284,8 +297,7 @@ First chunk: palette swap in globals.css + cleanup items from Phase 1 audit. The
 
 ## Next Development Session Goals
 
-1.  **Audit & reconcile**: confirm current state of repo matches progress.md; archive Direction A on branch
-2.  **Theme refit**: replace palette in globals.css with v2 colors; verify AA contrast; clean up Phase 1 audit items
-3.  **Header + Footer**: multi-page nav structure, no avatar
-4.  **Home hero**: oversized typography, no headshot, sage-lime accent placement
-5.  **Update progress.md** at end of session with completed chunks and next-session notes
+1.  **Chunk 2 — Header + Footer + Layout shell**: rebuild `Header.tsx` with multi-page nav (Home / Work / Photography), active-route highlight via `usePathname`, mobile menu, theme toggle. New `Footer.tsx` with email + GitHub + LinkedIn + location + resume PDF link. Mount both in `app/layout.tsx`. Stub `/work` and `/photography` routes so nav links don't 404.
+2.  **Chunk 3 — Home Hero**: oversized Geist Sans heavy name using `text-display-hero`, role + location + one-line summary in Geist Mono, one earned accent moment, no headshot.
+3.  **Chunk 4 — About + Experience timeline**: first-person About (Education line folded in), reverse-chrono cards with role, dates, outcomes, tech chips.
+4.  **End-of-session protocol**: commit chunk → confirm visually → update this file → commit `chore: update progress.md` → stop.
