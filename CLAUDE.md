@@ -51,3 +51,4 @@ Single-page, content-driven, design-restrained.
 - Don't change the theme architecture (CSS vars + class strategy) without flagging
 - No analytics, tracking, or third-party scripts
 - Don't invent content — pull from the resume only
+-   - No Claude attribution in commits — no `Co-Authored-By: Claude`, no "Generated with Claude Code" trailer, no emoji in commit messages. Plain conventional commits only (e.g. `feat: add experience timeline`, `chore: remove unused sass dep`).
