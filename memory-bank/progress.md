@@ -3,8 +3,8 @@
 ## v2 Build Chunks
 
 1. ✅ Theme system refit + type scale tokens — `b31a8ff`
-2. 🟡 Header + Footer + Layout shell — next
-3. 🔲 Home Hero
+2. ✅ Header + Footer + layout shell + `/work` and `/photography` stubs — `6c7573a`
+3. 🟡 Home Hero — next
 4. 🔲 Home About + Experience timeline
 5. 🔲 Home Contact strip
 6. 🔲 `/work` index
@@ -78,12 +78,15 @@
 - ✅ Typography scale tokens defined — `--display-hero` `clamp(3.5rem, 14vw, 9rem)`, `--display-section` `clamp(2.5rem, 6vw, 4.5rem)`
 - ✅ Legacy purge — removed `--primary`/`--secondary`/`--warning`/`--error`/`--success`, `--color-*` aliases, `.card`/`.btn-*`/`.text-gradient`/`.theme-toggle`
 
-**Layout Components**
+**Layout Components** — Chunk 2 ✅ `6c7573a`
 
-- 🔲 Header component with multi-page nav (Home, Work, Photography) — no avatar/headshot
-- 🔲 Footer component with social links, location, "built with" credit
-- 🔲 Responsive mobile menu
-- 🔲 Layout wrapper for consistent spacing across routes
+- ✅ Header with multi-page nav (home / work / photography), active-route via `usePathname`, forest/sage-lime underline on active, `aria-current="page"` for a11y
+- ✅ Footer with email + GitHub + LinkedIn + resume + location + year + "built with Next.js · Geist · sage-lime / forest" credit line
+- ✅ Responsive mobile disclosure menu — hamburger → X, `#` accent shown only on active item, auto-closes on link click
+- ✅ Layout shell — Header + `<main id="main">` + Footer mounted in `app/layout.tsx`, skip-to-content link added
+- ✅ Route stubs — minimal `/work` and `/photography` pages with metadata so nav links don't 404
+- ✅ Server-component compatibility — removed orphan `"use client"` from `Icon.tsx` per archived warning (it was breaking server-rendered Footer)
+- ✅ Resume PDF wired — `reference/ArshadAnwerResume.pdf` copied to `public/resume.pdf`, served at `/resume.pdf` (200, application/pdf, 153 KB)
 
 **Home Page (`/`)**
 
@@ -164,7 +167,7 @@
 
 ## Current Status
 
-### Project Phase: **Phase 2 — v2 Visual Rebuild & Site Structure** (in progress — chunk 1 of 10 done)
+### Project Phase: **Phase 2 — v2 Visual Rebuild & Site Structure** (in progress — 2 of 10 chunks done)
 
 **Completion Overview**
 
@@ -176,8 +179,8 @@
 
 ### Next Immediate Action
 
-**Chunk 2 — Header + Footer + Layout shell** (ready to begin)
-Multi-page nav (Home, Work, Photography) mounted in `app/layout.tsx`, theme toggle integrated, mobile menu (no animation library), Footer with location + social + resume PDF link. Open question to confirm at chunk start: stub `/work` and `/photography` routes so nav links don't 404.
+**Chunk 3 — Home Hero** (ready to begin)
+Oversized Geist Sans heavy name using `text-display-hero` token (`clamp(3.5rem, 14vw, 9rem)`), role + location + one-line summary in Geist Mono, one earned accent moment, no headshot. Verify at 375 that the display type stays confident — let it overhang or rebalance if needed. Open question to confirm at chunk start: the one-line summary copy — draft from resume material or have Arshad supply it.
 
 ## Known Issues
 
@@ -297,7 +300,7 @@ Multi-page nav (Home, Work, Photography) mounted in `app/layout.tsx`, theme togg
 
 ## Next Development Session Goals
 
-1.  **Chunk 2 — Header + Footer + Layout shell**: rebuild `Header.tsx` with multi-page nav (Home / Work / Photography), active-route highlight via `usePathname`, mobile menu, theme toggle. New `Footer.tsx` with email + GitHub + LinkedIn + location + resume PDF link. Mount both in `app/layout.tsx`. Stub `/work` and `/photography` routes so nav links don't 404.
-2.  **Chunk 3 — Home Hero**: oversized Geist Sans heavy name using `text-display-hero`, role + location + one-line summary in Geist Mono, one earned accent moment, no headshot.
-3.  **Chunk 4 — About + Experience timeline**: first-person About (Education line folded in), reverse-chrono cards with role, dates, outcomes, tech chips.
+1.  **Chunk 3 — Home Hero**: oversized Geist Sans heavy name using `text-display-hero`, role + location + one-line summary in Geist Mono, one earned accent moment, no headshot. Resolve one-liner copy source at chunk start.
+2.  **Chunk 4 — About + Experience timeline**: first-person About (Education line folded in), reverse-chrono cards (Totara DevOps → Totara FE → Qijang → SEB) with role, dates, outcome bullets, tech chips. Build `Chip` component during this chunk.
+3.  **Chunk 5 — Home Contact strip**: email + GitHub + LinkedIn + location above the global footer.
 4.  **End-of-session protocol**: commit chunk → confirm visually → update this file → commit `chore: update progress.md` → stop.
