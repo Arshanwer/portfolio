@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 :root {
-	/* Light Theme */
 	--primary: #2563eb;
 	--secondary: #f59e42;
 	--background: #f9fafb;
@@ -15,7 +14,6 @@
 	--error: #ef4444;
 	--success: #10b981;
 
-	/* Semantic color aliases */
 	--color-primary: var(--primary);
 	--color-secondary: var(--secondary);
 	--color-background: var(--background);
@@ -31,40 +29,6 @@
 	--font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-	:root {
-		/* Dark Theme */
-		--primary: #60a5fa;
-		--secondary: #fbbf24;
-		--background: #0f172a;
-		--surface: #1e293b;
-		--text-primary: #f1f5f9;
-		--text-muted: #94a3b8;
-		--border: #334155;
-		--shadow: rgba(0, 0, 0, 0.3);
-		--accent: #34d399;
-		--warning: #fbbf24;
-		--error: #f87171;
-		--success: #34d399;
-
-		/* Semantic color aliases */
-		--color-primary: var(--primary);
-		--color-secondary: var(--secondary);
-		--color-background: var(--background);
-		--color-surface: var(--surface);
-		--color-text-primary: var(--text-primary);
-		--color-text-muted: var(--text-muted);
-		--color-border: var(--border);
-		--color-accent: var(--accent);
-		--color-warning: var(--warning);
-		--color-error: var(--error);
-		--color-success: var(--success);
-		--font-sans: var(--font-geist-sans);
-		--font-mono: var(--font-geist-mono);
-	}
-}
-
-/* Dark theme via class override - higher specificity */
 html.dark {
 	--primary: #60a5fa;
 	--secondary: #fbbf24;
@@ -78,52 +42,6 @@ html.dark {
 	--warning: #fbbf24;
 	--error: #f87171;
 	--success: #34d399;
-
-	/* Semantic color aliases */
-	--color-primary: var(--primary);
-	--color-secondary: var(--secondary);
-	--color-background: var(--background);
-	--color-surface: var(--surface);
-	--color-text-primary: var(--text-primary);
-	--color-text-muted: var(--text-muted);
-	--color-border: var(--border);
-	--color-accent: var(--accent);
-	--color-warning: var(--warning);
-	--color-error: var(--error);
-	--color-success: var(--success);
-	--font-sans: var(--font-geist-sans);
-	--font-mono: var(--font-geist-mono);
-}
-
-/* Light theme when explicitly set */
-html:not(.dark) {
-	--primary: #2563eb;
-	--secondary: #f59e42;
-	--background: #f9fafb;
-	--surface: #ffffff;
-	--text-primary: #1e293b;
-	--text-muted: #64748b;
-	--border: #e5e7eb;
-	--shadow: rgba(0, 0, 0, 0.1);
-	--accent: #10b981;
-	--warning: #f59e0b;
-	--error: #ef4444;
-	--success: #10b981;
-
-	/* Semantic color aliases */
-	--color-primary: var(--primary);
-	--color-secondary: var(--secondary);
-	--color-background: var(--background);
-	--color-surface: var(--surface);
-	--color-text-primary: var(--text-primary);
-	--color-text-muted: var(--text-muted);
-	--color-border: var(--border);
-	--color-accent: var(--accent);
-	--color-warning: var(--warning);
-	--color-error: var(--error);
-	--color-success: var(--success);
-	--font-sans: var(--font-geist-sans);
-	--font-mono: var(--font-geist-mono);
 }
 
 html,
@@ -136,7 +54,7 @@ body {
 body {
 	background: var(--background);
 	color: var(--text-primary);
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
 	transition: background-color 0.3s ease, color 0.3s ease;
 }
 
