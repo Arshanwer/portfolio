@@ -46,14 +46,26 @@ export default function WorkIndex() {
 							2024 &rarr; present
 						</p>
 
-						<p className="mt-8 max-w-2xl text-base leading-relaxed text-foreground sm:text-[15px]">
-							A specialized platform for high-resolution photography,
-							currently in private beta with a closed circle of
-							contributors. Built end-to-end &mdash; Next.js frontend,
-							Fastify backend on PostgreSQL, with Redis caching and
-							RabbitMQ asynchronous task queuing. Deployment automated
-							through GitHub Actions to Amazon ECR and ECS.
-						</p>
+						<div className="mt-8 max-w-2xl space-y-6 text-base leading-relaxed text-foreground sm:text-[15px]">
+							<p>
+								Pixxellent started as a way to showcase my own
+								photography, something I&rsquo;ve been shooting on the
+								side for years. The scope kept expanding, and it&rsquo;s
+								now a curated stock-asset platform where contributors
+								publish high-resolution work and a broader audience gets
+								to use it. The plan reaches past photos: video is next,
+								then other digital asset types over time. Curation and
+								community matter more than volume.
+							</p>
+							<p>
+								Built end-to-end with Next.js (React, TypeScript) on the
+								frontend, Fastify on Node.js for the backend, and
+								PostgreSQL as the primary datastore. Redis handles
+								caching; RabbitMQ queues transactional emails, image
+								tagging in S3, and image processing. Deployment runs
+								through GitHub Actions to Amazon ECR and ECS.
+							</p>
+						</div>
 
 						<ul className="mt-6 flex flex-wrap gap-1.5">
 							{PIXXELLENT_STACK.map((t) => (
