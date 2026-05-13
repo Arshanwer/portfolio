@@ -30,10 +30,9 @@ export async function fetchPhotos(): Promise<CloudinaryPhoto[]> {
 	const params = new URLSearchParams({
 		asset_folder: folder,
 		max_results: "100",
-		direction: "desc",
 		context: "true",
 	});
-	const url = `https://api.cloudinary.com/v1_1/${cloudName}/resources/image?${params}`;
+	const url = `https://api.cloudinary.com/v1_1/${cloudName}/resources/by_asset_folder?${params}`;
 
 	try {
 		const res = await fetch(url, {
