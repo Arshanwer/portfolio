@@ -9,8 +9,8 @@
 5. ✅ Home Contact strip + footer email sync — `4d2a6ff`
 6. ✅ `/work` index — Pixxellent featured card — `e7eae10` + `d77ac2a` (post-review refactor) + `c221cf3` (problem framing + queue specifics)
 7. ⏭ `/work/pixxellent` case study — **deferred to Phase 4** (see "Future-Ready"). Card now carries the framing the case study would have duplicated; revisit when there are screenshots and lessons-learned from the live beta worth a dedicated page.
-8. ✅ `/photography` gallery — Cloudinary integration + CSS multi-column masonry — `6fe1dd6` + post-credentials fixes (`c8edc0d`): moved Image loader to `next.config.ts` `loaderFile` (was breaking Server→Client serialization) and switched fetch from Search API to Listing API to bypass Cloudinary's search-index eventual-consistency lag
-9. 🔲 Responsive + accessibility pass
+8. ✅ `/photography` gallery — Cloudinary integration + CSS multi-column masonry — `6fe1dd6` + post-credentials fixes (`c8edc0d`, `8e37c1e`): moved Image loader to `next.config.ts` `loaderFile` (was breaking Server→Client serialization), switched fetch from Search API to dedicated `/resources/by_asset_folder` endpoint (Search API has eventual-consistency lag; the basic Listing API silently ignores `asset_folder` and returns all images — `by_asset_folder` is the dynamic-folder-mode endpoint that actually filters)
+9. 🟡 Responsive + accessibility pass — code-level a11y audit done + fixes landed (next)
 10. 🔲 Polish + motion + final accent audit
 
 ## What Works
