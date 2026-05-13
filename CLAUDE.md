@@ -15,7 +15,7 @@ Single-page, content-driven, design-restrained.
 ## Source of truth
 
 - Content: `./reference/ArshadAnwerResume.pdf` — when this changes, update affected sections
-- Design direction: **v2 — modern-developer with personality.** Mono-leaning body (Geist Mono) with bold sans display moments (Geist Sans heavy), sage-lime / forest accent on warm near-black / warm off-white. Full spec in [`memory-bank/design-direction.md`](memory-bank/design-direction.md). Direction A (editorial dossier) was attempted and rejected; archived on branch `archive/direction-a-editorial`.
+- Design direction: **v2 — modern-developer with personality.** Mono-leaning body (Geist Mono) with bold sans display moments (Geist Sans heavy), sage-lime / moss accent on warm near-black / warm off-white. Full spec in [`memory-bank/design-direction.md`](memory-bank/design-direction.md). Direction A (editorial dossier) was attempted and rejected; archived on branch `archive/direction-a-editorial`.
 
 ## Design principles
 

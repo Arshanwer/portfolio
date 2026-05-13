@@ -129,7 +129,7 @@ export default function ThemeToggle() {
 	--text: #1a1a1a;
 	--text-muted: #5c5c5c;
 	--border: #e8e2d4;
-	--accent: #3f5c1c; /* forest */
+	--accent: #4d7619; /* moss */
 }
 
 html.dark {

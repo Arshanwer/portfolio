@@ -62,7 +62,7 @@
 **Design Direction (v2 locked)**
 
 - ✅ References reviewed and synthesized: Josh Comeau, Maggie Appleton, two Dribbble shots (mono-leaning developer + bold-display photographer)
-- ✅ Palette locked — Dark: bg #0B0B0C / text #EAEAEA / accent #B5D827 (sage-lime); Light: bg #F8F5EE / text #1A1A1A / accent #3F5C1C (forest)
+- ✅ Palette locked — Dark: bg #0B0B0C / text #EAEAEA / accent #B5D827 (sage-lime); Light: bg #F8F5EE / text #1A1A1A / accent #4D7619 (moss — swapped from forest #3F5C1C after live review on 2026-05-13; old hue was tonally too muted, new hue is brighter/more vivid at the same family, 4.74:1 contrast)
 - ✅ Typography locked — Geist Mono for body/nav/labels/dates; Geist Sans heavy for hero + section display moments. No new fonts.
 - ✅ Information architecture locked — multi-page: `/`, `/work`, `/work/[slug]`, `/photography`
 - ✅ Hard constraints locked — no headshot, one accent doing real work, decorative elements earned not sprinkled, motion purposeful only
@@ -73,15 +73,15 @@
 
 **Theme System Refit** — Chunk 1 ✅ `b31a8ff`
 
-- ✅ Replaced palette in globals.css with v2 (sage-lime / forest)
+- ✅ Replaced palette in globals.css with v2 (sage-lime / moss — light-mode accent refined from initial forest #3F5C1C to moss #4D7619 on 2026-05-13)
 - ✅ WCAG AA verified — accent on bg: dark ~12.0, light ~7.0; text/muted all pass
 - ✅ Typography scale tokens defined — `--display-hero` `clamp(3.5rem, 14vw, 9rem)`, `--display-section` `clamp(2.5rem, 6vw, 4.5rem)`
 - ✅ Legacy purge — removed `--primary`/`--secondary`/`--warning`/`--error`/`--success`, `--color-*` aliases, `.card`/`.btn-*`/`.text-gradient`/`.theme-toggle`
 
 **Layout Components** — Chunk 2 ✅ `6c7573a`
 
-- ✅ Header with multi-page nav (home / work / photography), active-route via `usePathname`, forest/sage-lime underline on active, `aria-current="page"` for a11y
-- ✅ Footer with email + GitHub + LinkedIn + resume + location + year + "built with Next.js · Geist · sage-lime / forest" credit line
+- ✅ Header with multi-page nav (home / work / photography), active-route via `usePathname`, moss/sage-lime underline on active, `aria-current="page"` for a11y
+- ✅ Footer with email + GitHub + LinkedIn + resume + location + year + "built with Next.js · Geist · sage-lime / moss" credit line
 - ✅ Responsive mobile disclosure menu — hamburger → X, `#` accent shown only on active item, auto-closes on link click
 - ✅ Layout shell — Header + `<main id="main">` + Footer mounted in `app/layout.tsx`, skip-to-content link added
 - ✅ Route stubs — minimal `/work` and `/photography` pages with metadata so nav links don't 404
@@ -253,7 +253,7 @@ Build the dedicated case study page at `/work/pixxellent`. Problem framing → a
 **Direction v2 — Modern-Developer with Personality (locked)**
 
 - Selected after reviewing Josh Comeau, Maggie Appleton, and two Dribbble shots
-- Visual language: mono-leaning base (Geist Mono body), bold sans display moments (Geist Sans heavy at hero scale), sage-lime accent on warm near-black (dark), forest accent on warm off-white (light)
+- Visual language: mono-leaning base (Geist Mono body), bold sans display moments (Geist Sans heavy at hero scale), sage-lime accent on warm near-black (dark), moss accent on warm off-white (light) — initially forest #3F5C1C, refined to moss #4D7619 on 2026-05-13 for better tonal balance against the warm cream bg
 - Information architecture: multi-page (`/`, `/work`, `/work/[slug]`, `/photography`)
 - Hard constraints: no headshot, one accent doing real work, decorative elements earned, motion purposeful only
 - Full specification: `memory-bank/design-direction.md` — references, palette, typography, layout patterns, rejected directions
@@ -262,7 +262,7 @@ Build the dedicated case study page at `/work/pixxellent`. Problem framing → a
 
 **Design System**
 
-- ✅ Color palette: sage-lime (#B5D827) / forest (#3F5C1C), warm near-black / warm off-white backgrounds
+- ✅ Color palette: sage-lime (#B5D827) / moss (#4D7619), warm near-black / warm off-white backgrounds
 - ✅ Typography: Geist Mono (body) + Geist Sans heavy (display) — no new fonts
 - ✅ Animation approach: CSS transitions + scroll-triggered fades; Framer Motion only if a specific interaction warrants it
 - ✅ Information architecture: multi-page (4 routes initial, room to grow)

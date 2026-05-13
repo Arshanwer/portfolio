@@ -16,7 +16,7 @@
 - Text: #1A1A1A
 - Text Muted: #5C5C5C
 - Border: #E8E2D4
-- Accent: #3F5C1C (forest)
+- Accent: #4D7619 (moss)
 
 ### Theme Implementation Strategy
 

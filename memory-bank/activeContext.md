@@ -31,7 +31,7 @@ Direction A (editorial dossier) was attempted in early Phase 2 and abandoned —
 **Locked**
 
 - Multi-page IA: `/`, `/work`, `/work/[slug]`, `/photography`
-- Palette — Dark: bg #0B0B0C / text #EAEAEA / accent #B5D827 (sage-lime); Light: bg #F8F5EE / text #1A1A1A / accent #3F5C1C (forest)
+- Palette — Dark: bg #0B0B0C / text #EAEAEA / accent #B5D827 (sage-lime); Light: bg #F8F5EE / text #1A1A1A / accent #4D7619 (moss)
 - Typography: Geist Mono (body, nav, labels), Geist Sans heavy (hero + section display). No new fonts.
 - No headshot anywhere. Type fills the hero.
 - One accent doing real work; decorative elements earned not sprinkled; motion purposeful only.

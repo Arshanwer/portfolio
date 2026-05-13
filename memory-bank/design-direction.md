@@ -40,7 +40,7 @@ The hero is **type, not photo** — name set in heavy sans at display-poster sca
 | `--text`       | `#1A1A1A` | Primary text                                        |
 | `--text-muted` | `#5C5C5C` | Secondary text                                      |
 | `--border`     | `#E8E2D4` | Section dividers, chip borders                      |
-| `--accent`     | `#3F5C1C` | Forest. Same hue family as sage-lime, tuned for AA. |
+| `--accent`     | `#4D7619` | Moss. Same hue family as sage-lime, brightened to feel less dead against the warm cream while still passing WCAG AA (4.74:1). Original forest `#3F5C1C` (6.88:1) was tonally too muted — replaced 2026-05-13 after live review. |
 
 Hue chosen so both modes feel like the same site. Verify accent against `--bg` in both modes before shipping — target ≥ 4.5:1 for text-on-bg, ≥ 3:1 for non-text uses (decorative marks, icons, borders carrying meaning).
 

@@ -58,7 +58,7 @@ export default function Footer() {
 				</ul>
 			</div>
 			<div className="border-t border-border px-6 py-4 text-xs text-muted sm:px-8 lg:px-12">
-				built with Next.js · Geist · sage-lime / forest
+				built with Next.js · Geist · sage-lime / moss
 			</div>
 		</footer>
 	);
