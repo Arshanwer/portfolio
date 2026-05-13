@@ -100,9 +100,9 @@ portfolio/
 
 ### Recommended Platform
 
-- **Vercel:** Native Next.js hosting platform
+- **AWS** (pivoted from Vercel on 2026-05-13). Specific shape TBD — likely ECS or App Runner to keep parity with Pixxellent's ECS setup and to keep ISR working out of the box on a Node.js server. Pure static export (S3 + CloudFront with `output: 'export'`) is also viable but would disable `/photography` ISR.
 - **Build Command:** `npm run build`
-- **Start Command:** `npm run start`
+- **Start Command:** `npm run start` (Node.js host) — not applicable for pure static export
 
 ### Environment Considerations
 
@@ -143,6 +143,6 @@ portfolio/
 - Consider adding React Query/SWR for data fetching
 - Implement custom API routes for contact forms
 - Add Framer Motion for animations
-- Integrate analytics (Google Analytics/Vercel Analytics)
+- Analytics is currently out of scope per CLAUDE.md ("No analytics, tracking, or third-party scripts"). Revisit only if the no-tracking constraint is lifted.
 - Set up automated testing (Jest/Testing Library)
 - Configure CI/CD pipeline

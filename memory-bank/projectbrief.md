@@ -39,6 +39,6 @@ This is a personal portfolio project currently in the initial setup phase. The p
 ## Constraints
 
 -   Must work across modern browsers
--   Should be deployable to Vercel (Next.js native platform)
+-   Should be deployable to AWS (target: ECS / App Runner / Amplify / static — exact shape TBD)
 -   Keep dependencies minimal and purposeful
 -   Follow TypeScript strict mode requirements

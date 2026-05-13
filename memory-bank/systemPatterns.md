@@ -370,4 +370,4 @@ export default function Component({ title, optional }: ComponentProps) {
 - **API integration**: Custom hooks if contact form or dynamic content is added
 - **CMS**: MDX-based content for case studies if catalog grows beyond Pixxellent
 - **Testing**: Jest + React Testing Library if interactive components multiply
-- **Monitoring**: Vercel Analytics on deploy
+- **Monitoring**: out of scope per CLAUDE.md (no analytics or third-party scripts); revisit if constraint lifts

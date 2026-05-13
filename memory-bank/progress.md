@@ -9,7 +9,7 @@
 5. ✅ Home Contact strip + footer email sync — `4d2a6ff`
 6. ✅ `/work` index — Pixxellent featured card — `e7eae10` + `d77ac2a` (post-review refactor) + `c221cf3` (problem framing + queue specifics)
 7. ⏭ `/work/pixxellent` case study — **deferred to Phase 4** (see "Future-Ready"). Card now carries the framing the case study would have duplicated; revisit when there are screenshots and lessons-learned from the live beta worth a dedicated page.
-8. ✅ `/photography` gallery — Cloudinary integration + CSS multi-column masonry — `6fe1dd6` (pending Cloudinary credentials)
+8. ✅ `/photography` gallery — Cloudinary integration + CSS multi-column masonry — `6fe1dd6` + post-credentials fixes (`c8edc0d`): moved Image loader to `next.config.ts` `loaderFile` (was breaking Server→Client serialization) and switched fetch from Search API to Listing API to bypass Cloudinary's search-index eventual-consistency lag
 9. 🔲 Responsive + accessibility pass
 10. 🔲 Polish + motion + final accent audit
 
@@ -104,11 +104,12 @@
 **Photography (`/photography`)** — Gallery ✅ `6fe1dd6` (pending credentials)
 
 - ✅ CSS multi-column masonry (`columns-1 sm:columns-2 lg:columns-3`) — pure CSS, no JS, works everywhere. Reading order is column-down; fine for a photo grid with no captions.
-- ✅ Image optimization via `next/image` with a custom Cloudinary `loader` — transformations handled by Cloudinary URL params (`w_{width},q_auto,f_auto,c_limit`). No Vercel optimization budget consumed.
+- ✅ Image optimization via `next/image` with a custom Cloudinary `loader` — transformations handled by Cloudinary URL params (`w_{width},q_auto,f_auto,c_limit`). Next.js's built-in optimizer is bypassed entirely, so no platform-specific optimization budget or Lambda invocations on the deploy target.
 - ✅ Cloudinary fetch — Server Component reads from Cloudinary's `/resources/search` Admin API, sorted by `created_at` desc, max 100. ISR via `revalidate = 3600` so new uploads appear within an hour without a redeploy.
 - ✅ Empty state — when env vars are absent or the API returns nothing, page renders a mono `// gallery wiring up — photos go live once Cloudinary is connected` note instead of an empty grid.
 - ✅ Env scaffolding — `.env.local.example` documents required vars. `.gitignore` updated to allow the example file through. `next.config.ts` `remotePatterns` allows `res.cloudinary.com`.
-- 🔲 **User setup required before gallery is live:** create Cloudinary account (free tier), upload photos to a folder named `portfolio` (or override via `CLOUDINARY_FOLDER` env var), copy `.env.local.example` → `.env.local`, fill in `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET` from Cloudinary console. Set the same env vars in Vercel project settings for production.
+- 🔲 **User setup required before gallery is live:** create Cloudinary account (free tier), upload photos to a folder named `portfolio` (or override via `CLOUDINARY_FOLDER` env var), copy `.env.local.example` → `.env.local`, fill in `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET` from Cloudinary console. Set the same env vars on the production host once AWS deployment shape is chosen (chunk 10).
+- ⚠ **ISR caveat tied to deployment choice:** `revalidate = 3600` requires a dynamic Node.js host (ECS, App Runner, Amplify SSR, EC2). On pure static export to S3 + CloudFront, ISR is silently no-op and new Cloudinary uploads would only appear after a rebuild + redeploy. Resolve during chunk 10.
 - 🔲 Optional category grouping — deferred until photo set warrants it. Cloudinary's search expression supports tag-based filtering, so this is a small follow-up if needed.
 
 ### Phase 3: Component Library & Polish
@@ -168,7 +169,7 @@
 - 🔲 Environment configuration for production
 - 🔲 Error handling and 404 pages
 - 🔲 Sitemap and robots.txt generation
-- 🔲 Deployment to Vercel with custom domain
+- 🔲 Deployment to AWS with custom domain — architecture TBD (ECS or App Runner are the natural fit given the Pixxellent ECS background and to preserve `/photography` ISR; static export to S3 + CloudFront is the lighter alternative but loses ISR)
 - 🔲 SSL certificate and security headers
 
 ## Current Status
@@ -288,7 +289,7 @@ Systematic sweep across all routes at 375 / 768 / 1024 / 1280 / 1920 in both the
 
 **Deployment & Performance**
 
-- 🤔 Custom domain and hosting configuration (assumed Vercel)
+- 🤔 Custom domain and hosting configuration — pivoted from Vercel to AWS on 2026-05-13; specific shape TBD at chunk 10
 - 🤔 Performance monitoring and optimization tools
 - 🤔 CI/CD pipeline setup for automated deployment
 
