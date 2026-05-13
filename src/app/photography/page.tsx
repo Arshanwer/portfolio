@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { fetchPhotos, cloudinaryLoader } from "@/lib/cloudinary";
+import { fetchPhotos } from "@/lib/cloudinary";
 
 export const metadata = {
 	title: "Photography — Arshad Anwer",
@@ -39,7 +39,6 @@ export default async function Photography() {
 							className="mb-4 break-inside-avoid sm:mb-5 lg:mb-6"
 						>
 							<Image
-								loader={cloudinaryLoader}
 								src={photo.public_id}
 								alt={photo.context?.custom?.alt ?? ""}
 								width={photo.width}
