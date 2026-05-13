@@ -5,8 +5,8 @@
 1. ✅ Theme system refit + type scale tokens — `b31a8ff`
 2. ✅ Header + Footer + layout shell + `/work` and `/photography` stubs — `6c7573a`
 3. ✅ Home Hero — `eea25da`
-4. 🟡 Home About + Experience timeline — next
-5. 🔲 Home Contact strip
+4. ✅ Home About + Experience timeline + chrome-edge layout — `bfe9b80`
+5. 🟡 Home Contact strip — next
 6. 🔲 `/work` index
 7. 🔲 `/work/pixxellent` case study
 8. 🔲 `/photography` gallery
@@ -88,11 +88,12 @@
 - ✅ Server-component compatibility — removed orphan `"use client"` from `Icon.tsx` per archived warning (it was breaking server-rendered Footer)
 - ✅ Resume PDF wired — `reference/ArshadAnwerResume.pdf` copied to `public/resume.pdf`, served at `/resume.pdf` (200, application/pdf, 153 KB)
 
-**Home Page (`/`)** — Hero ✅ `eea25da`
+**Home Page (`/`)** — Hero ✅ `eea25da` · About + Experience ✅ `bfe9b80`
 
-- ✅ Hero — `Arshad Anwer` in Geist Sans 900 at `text-display-hero` clamp(56px → 144px); role + location in Geist Mono; one-line summary with accent underline on "infrastructure" as the earned accent moment; no headshot; type fills the space at all breakpoints (375 wraps name to 2 lines, role to 2 lines via responsive `<br>`)
-- 🔲 About — first-person, conversational voice
-- 🔲 Experience timeline — reverse-chrono cards (Totara DevOps, Totara FE, Qijang, SEB) with role, dates, outcome bullets, tech chips
+- ✅ Hero — `Arshad Anwer` in Geist Sans 900 at `text-display-hero` clamp(56px → 144px); role + location in Geist Mono; one-line summary with accent underline on "infrastructure" as the earned accent moment; no headshot; type fills the space at all breakpoints (≥1024 the name now wraps to 2 lines inside the shared column — endorsed by design-direction.md "rebalance to two lines if needed", reads as poster-stacked)
+- ✅ About — 3 first-person paragraphs (BSc Hons Staffordshire 2013 folded into ¶2), mono prose at `max-w-2xl`
+- ✅ Experience timeline — reverse-chrono entries (Totara DevOps, Totara FE, Qijang, SEB) with date column, trimmed outcome bullets, accent dot on the current role, tech chips via new `Chip` component
+- ✅ Chrome-edge layout — Hero/About/Experience anchored to centered `max-w-5xl` column; Header + Footer content pushed to viewport edges (`px-6 sm:px-8 lg:px-12`) so chrome frames the document at all sizes
 - 🔲 Contact strip — email, GitHub, LinkedIn, location
 
 **Work (`/work`, `/work/[slug]`)**
@@ -167,7 +168,7 @@
 
 ## Current Status
 
-### Project Phase: **Phase 2 — v2 Visual Rebuild & Site Structure** (in progress — 3 of 10 chunks done)
+### Project Phase: **Phase 2 — v2 Visual Rebuild & Site Structure** (in progress — 4 of 10 chunks done)
 
 **Completion Overview**
 
@@ -179,8 +180,10 @@
 
 ### Next Immediate Action
 
-**Chunk 4 — Home About + Experience timeline** (ready to begin)
-About: 2–3 first-person paragraphs in Geist Mono prose (15–16px, line-height 1.6), Education line (BSc Hons Software Engineering, Staffordshire 2013) folded in. Experience timeline: reverse-chrono entries — Totara DevOps (Jan 2025 – present), Totara FE (Feb 2020 – Jan 2025), Qijang Senior SE (May 2019 – Jan 2020), SEB Software Developer (Mar 2015 – May 2019). Each entry: role, dates, 2–4 outcome bullets pulled from the resume, tech chips. Build a small `Chip` component. Hover/focus dim siblings to emphasize the active entry. Open questions at chunk start: how aggressive should the outcome bullets be (resume verbatim vs. trimmed for screen-reading); is dim-on-hover worth implementing or noise.
+**Chunk 5 — Home Contact strip** (ready to begin)
+A dedicated "get in touch" moment sitting above the global footer on `/`. Distinct from the footer's compact link row — this should be the page's last big moment, sized like an invitation rather than a utility row. Pull email + GitHub + LinkedIn + location from the same source the footer uses (so links stay in sync). Consider: large mono email as the primary CTA with a hover accent; secondary links smaller; location as a quiet label. Section pattern continues the `#contact` heading + centered `max-w-5xl` column convention established in chunk 4. Open question: should the email be a `<button>` that copies to clipboard with a toast, or just a `mailto:` link? Default to `mailto:` for restraint — revisit only if it feels under-served.
+
+**Deferred to chunk 10 polish:** dim-on-hover for active experience card.
 
 ## Known Issues
 
