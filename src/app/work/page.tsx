@@ -37,13 +37,7 @@ export default function WorkIndex() {
 
 			<ul className="mt-12 sm:mt-16">
 				<li>
-					<a
-						href="https://contributor.pixxellent.com"
-						target="_blank"
-						rel="noopener noreferrer"
-						aria-label="Visit Pixxellent — digital asset platform (opens in new tab)"
-						className="group block rounded-sm border border-border p-6 transition-colors duration-200 hover:border-accent focus-visible:border-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent motion-reduce:transition-none sm:p-10"
-					>
+					<article className="rounded-sm border border-border p-6 sm:p-10">
 						<h2 className="font-sans text-3xl font-extrabold leading-none tracking-tight text-foreground sm:text-4xl lg:text-5xl">
 							Pixxellent
 						</h2>
@@ -69,18 +63,25 @@ export default function WorkIndex() {
 							))}
 						</ul>
 
-						<p className="mt-8 inline-flex items-center gap-1.5 font-mono text-sm text-foreground transition-colors duration-200 group-hover:text-accent group-focus-visible:text-accent motion-reduce:transition-none sm:text-base">
-							<span className="underline decoration-accent decoration-2 underline-offset-[6px]">
-								visit contributor.pixxellent.com
-							</span>
-							<Icon
-								icon={ArrowUpRight}
-								size={16}
-								className="text-accent"
-								aria-hidden="true"
-							/>
+						<p className="mt-8">
+							<a
+								href="https://contributor.pixxellent.com"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="inline-flex items-center gap-1.5 font-mono text-sm text-foreground transition-colors duration-200 hover:text-accent focus-visible:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent motion-reduce:transition-none sm:text-base"
+							>
+								<span className="underline decoration-accent decoration-2 underline-offset-[6px]">
+									visit contributor.pixxellent.com
+								</span>
+								<Icon
+									icon={ArrowUpRight}
+									size={16}
+									className="text-accent"
+									aria-hidden="true"
+								/>
+							</a>
 						</p>
-					</a>
+					</article>
 				</li>
 			</ul>
 
