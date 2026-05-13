@@ -7,8 +7,8 @@
 3. ✅ Home Hero — `eea25da`
 4. ✅ Home About + Experience timeline + chrome-edge layout — `bfe9b80`
 5. ✅ Home Contact strip + footer email sync — `4d2a6ff`
-6. 🟡 `/work` index — next
-7. 🔲 `/work/pixxellent` case study
+6. ✅ `/work` index — Pixxellent featured card — `e7eae10`
+7. 🟡 `/work/pixxellent` case study — next
 8. 🔲 `/photography` gallery
 9. 🔲 Responsive + accessibility pass
 10. 🔲 Polish + motion + final accent audit
@@ -96,9 +96,9 @@
 - ✅ Chrome-edge layout — Hero/About/Experience anchored to centered `max-w-5xl` column; Header + Footer content pushed to viewport edges (`px-6 sm:px-8 lg:px-12`) so chrome frames the document at all sizes
 - ✅ Contact strip — `#contact` heading, short tagline, email as primary inline CTA in mono (text-xl → text-3xl, persistent accent underline, hover shifts text color to accent), github/linkedin/resume secondary row, `↘ wellington, nz · open to remote` location label. Footer email reconciled to `contact@arshadanwer.com` per resume.
 
-**Work (`/work`, `/work/[slug]`)**
+**Work (`/work`, `/work/[slug]`)** — Index ✅ `e7eae10`
 
-- 🔲 `/work` index — Pixxellent featured, slots for future projects
+- ✅ `/work` index — `#work` heading + Pixxellent featured card. Whole-card `<a>` to `https://contributor.pixxellent.com` (external, new tab) — pattern chosen for forward scalability when more cards land. Card chrome: thin `border-border` rectangle, accent border + accent visit-line on hover/focus, `aria-label` for clean screen-reader announcement. Body trimmed to 3 sentences (what / stack / how it ships). Stack chips: Next.js, TypeScript, Fastify, PostgreSQL, Redis, RabbitMQ, AWS ECS, GitHub Actions. Mono comment-style `// more projects landing through 2026` note below the card.
 - 🔲 `/work/pixxellent` case study — problem, approach, stack, screenshots, live link
 
 **Photography (`/photography`)**
@@ -168,7 +168,7 @@
 
 ## Current Status
 
-### Project Phase: **Phase 2 — v2 Visual Rebuild & Site Structure** (in progress — 5 of 10 chunks done)
+### Project Phase: **Phase 2 — v2 Visual Rebuild & Site Structure** (in progress — 6 of 10 chunks done)
 
 **Completion Overview**
 
@@ -180,8 +180,10 @@
 
 ### Next Immediate Action
 
-**Chunk 6 — `/work` index** (ready to begin)
-Replace the route stub at `/work` with a real index page. Pixxellent should be the featured card (problem framing, stack chips, "case study →" link to `/work/pixxellent`, and a "live →" link to `www.contributor.pixxellent.com`). Leave room for future projects without inventing placeholders — the simplest pattern is one featured card now, with the grid/list shape ready for additions. Page reuses the `#work` heading + centered `max-w-5xl` column convention, with cards in mono-leaning chrome (border + sparse accent). Confirm whether the case study route exists at `/work/pixxellent` (chunk 7) before linking, or leave the link as a stub for now. Open question: should the card link to the live site directly, or to the case study, or both?
+**Chunk 7 — `/work/pixxellent` case study** (ready to begin)
+Build the dedicated case study page at `/work/pixxellent`. Problem framing → approach → stack → screenshots → live link. Reuses the centered `max-w-5xl` column convention and `#` accent prefix for sub-headings. Open question to resolve at start of next session: does the /work index card stay as the whole-card external link to the live site, or pivot to point at this case study once it exists? (The locked decision from chunk 6 was to keep it on the live site, with case studies treated as a separate layer — confirm before changing.) Consider whether to add a "case study →" secondary affordance on the index card after this lands.
+
+**Verification gap from chunk 6:** automated visual verification at 1920 / 1280 / 768 / 375 in light + dark was not run (Playwright lock conflict with a stale browser session). Spot-check the `/work` index manually before push.
 
 **Deferred to chunk 10 polish:** dim-on-hover for active experience card.
 
