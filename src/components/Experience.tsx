@@ -77,6 +77,20 @@ const ROLES: Role[] = [
 	},
 ];
 
+function DateLine({ dates, current }: { dates: string; current?: boolean }) {
+	return (
+		<div className="flex items-center gap-2">
+			{current && (
+				<span
+					aria-hidden="true"
+					className="inline-block h-1.5 w-1.5 rounded-full bg-accent"
+				/>
+			)}
+			<span>{dates}</span>
+		</div>
+	);
+}
+
 export default function Experience() {
 	return (
 		<section
@@ -100,16 +114,8 @@ export default function Experience() {
 						key={`${role.company}-${role.title}`}
 						className="grid gap-6 sm:grid-cols-[10rem_1fr] sm:gap-10"
 					>
-						<div className="text-xs uppercase tracking-wider text-muted sm:pt-1">
-							<div className="flex items-center gap-2">
-								{role.current && (
-									<span
-										aria-hidden="true"
-										className="inline-block h-1.5 w-1.5 rounded-full bg-accent"
-									/>
-								)}
-								<span>{role.dates}</span>
-							</div>
+						<div className="hidden text-xs uppercase tracking-wider text-muted sm:block sm:pt-1">
+							<DateLine dates={role.dates} current={role.current} />
 						</div>
 
 						<div>
@@ -123,6 +129,10 @@ export default function Experience() {
 								</span>
 								<span className="text-muted">{role.company}</span>
 							</h3>
+
+							<div className="mt-2 text-xs uppercase tracking-wider text-muted sm:hidden">
+								<DateLine dates={role.dates} current={role.current} />
+							</div>
 
 							<ul className="mt-4 space-y-2.5 text-sm leading-relaxed text-foreground sm:text-[15px]">
 								{role.bullets.map((b, i) => (
