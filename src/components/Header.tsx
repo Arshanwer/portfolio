@@ -24,7 +24,7 @@ export default function Header() {
 
 	return (
 		<header className="sticky top-0 z-40 border-b border-border bg-background">
-			<div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-6">
+			<div className="flex h-14 items-center justify-between px-6 sm:px-8 lg:px-12">
 				<nav aria-label="Primary" className="hidden md:block">
 					<ul className="flex items-center gap-8">
 						{NAV_LINKS.map((link) => {
@@ -72,7 +72,7 @@ export default function Header() {
 					aria-label="Primary mobile"
 					className="border-t border-border bg-background md:hidden"
 				>
-					<ul className="mx-auto flex max-w-5xl flex-col px-6 py-2">
+					<ul className="flex flex-col px-6 py-2 sm:px-8 lg:px-12">
 						{NAV_LINKS.map((link) => {
 							const active = isActive(pathname, link.href);
 							return (

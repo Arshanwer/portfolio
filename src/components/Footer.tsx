@@ -32,7 +32,7 @@ export default function Footer() {
 	const year = new Date().getFullYear();
 	return (
 		<footer className="mt-24 border-t border-border">
-			<div className="mx-auto flex max-w-5xl flex-col gap-6 px-6 py-12 text-sm sm:flex-row sm:items-center sm:justify-between">
+			<div className="flex flex-col gap-6 px-6 py-12 text-sm sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-12">
 				<p className="text-muted">
 					<span aria-hidden="true" className="text-accent">
 						↘
@@ -57,7 +57,7 @@ export default function Footer() {
 					))}
 				</ul>
 			</div>
-			<div className="mx-auto max-w-5xl border-t border-border px-6 py-4 text-xs text-muted">
+			<div className="border-t border-border px-6 py-4 text-xs text-muted sm:px-8 lg:px-12">
 				built with Next.js · Geist · sage-lime / forest
 			</div>
 		</footer>
