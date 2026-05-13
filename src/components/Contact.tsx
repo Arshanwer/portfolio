@@ -27,7 +27,7 @@ export default function Contact() {
 		<section
 			id="contact"
 			aria-labelledby="contact-heading"
-			className="mx-auto max-w-5xl px-6 py-20 sm:py-24 lg:py-28"
+			className="mx-auto max-w-5xl px-6 py-20 sm:px-8 sm:py-24 lg:px-12 lg:py-28"
 		>
 			<h2
 				id="contact-heading"

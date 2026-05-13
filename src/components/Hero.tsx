@@ -1,6 +1,6 @@
 export default function Hero() {
 	return (
-		<section className="mx-auto max-w-5xl px-6 pt-20 pb-24 sm:pt-28 sm:pb-32 lg:pt-32 lg:pb-40">
+		<section className="mx-auto max-w-5xl px-6 pt-20 pb-24 sm:px-8 sm:pt-28 sm:pb-32 lg:px-12 lg:pt-32 lg:pb-40">
 			<h1 className="font-sans text-display-hero font-black leading-[0.92] tracking-tight text-foreground">
 				Arshad Anwer
 			</h1>

@@ -82,7 +82,7 @@ export default function Experience() {
 		<section
 			id="experience"
 			aria-labelledby="experience-heading"
-			className="mx-auto max-w-5xl px-6 py-20 sm:py-24 lg:py-28"
+			className="mx-auto max-w-5xl px-6 py-20 sm:px-8 sm:py-24 lg:px-12 lg:py-28"
 		>
 			<h2
 				id="experience-heading"
