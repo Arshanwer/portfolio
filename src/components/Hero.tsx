@@ -2,7 +2,7 @@ export default function Hero() {
 	return (
 		<section
 			aria-labelledby="hero-heading"
-			className="mx-auto max-w-5xl px-6 pt-20 pb-24 sm:px-8 sm:pt-28 sm:pb-32 lg:px-12 lg:pt-32 lg:pb-40"
+			className="mx-auto max-w-5xl px-6 pt-20 pb-20 sm:px-8 sm:pt-28 sm:pb-24 lg:px-12 lg:pt-32 lg:pb-28"
 		>
 			<h1
 				id="hero-heading"
