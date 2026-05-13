@@ -4,6 +4,7 @@ export interface CloudinaryPhoto {
 	height: number;
 	format: string;
 	secure_url: string;
+	blurDataURL?: string;
 	context?: {
 		custom?: {
 			alt?: string;
@@ -14,6 +15,22 @@ export interface CloudinaryPhoto {
 
 interface ListResponse {
 	resources?: CloudinaryPhoto[];
+}
+
+async function fetchBlurDataURL(
+	publicId: string,
+	cloudName: string,
+): Promise<string | undefined> {
+	const url = `https://res.cloudinary.com/${cloudName}/image/upload/c_scale,w_16,e_blur:1500,q_30,f_jpg/${publicId}`;
+	try {
+		const res = await fetch(url, { next: { revalidate: 3600 } });
+		if (!res.ok) return undefined;
+		const buffer = await res.arrayBuffer();
+		const base64 = Buffer.from(buffer).toString("base64");
+		return `data:image/jpeg;base64,${base64}`;
+	} catch {
+		return undefined;
+	}
 }
 
 export async function fetchPhotos(): Promise<CloudinaryPhoto[]> {
@@ -49,7 +66,14 @@ export async function fetchPhotos(): Promise<CloudinaryPhoto[]> {
 		}
 
 		const data = (await res.json()) as ListResponse;
-		return data.resources ?? [];
+		const photos = data.resources ?? [];
+
+		return Promise.all(
+			photos.map(async (photo) => ({
+				...photo,
+				blurDataURL: await fetchBlurDataURL(photo.public_id, cloudName),
+			})),
+		);
 	} catch (error) {
 		console.error("Cloudinary fetch error:", error);
 		return [];

@@ -67,6 +67,8 @@ export default function PhotographyGallery({ photos }: PhotographyGalleryProps) 
 							width={photo.width}
 							height={photo.height}
 							sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+							placeholder={photo.blurDataURL ? "blur" : "empty"}
+							blurDataURL={photo.blurDataURL}
 							className="h-auto w-full"
 						/>
 					</button>
@@ -92,16 +94,27 @@ export default function PhotographyGallery({ photos }: PhotographyGalleryProps) 
 					>
 						<Icon icon={X} aria-hidden="true" />
 					</button>
-					<Image
-						src={selectedPhoto.public_id}
-						alt={selectedPhoto.context?.custom?.alt ?? ""}
-						width={selectedPhoto.width}
-						height={selectedPhoto.height}
-						sizes="100vw"
-						priority
+					<div
 						onClick={(e) => e.stopPropagation()}
-						className="h-auto max-h-[90vh] w-auto max-w-[95vw] cursor-default"
-					/>
+						className="relative"
+						style={{
+							aspectRatio: `${selectedPhoto.width} / ${selectedPhoto.height}`,
+							width: `min(95vw, calc(90vh * ${selectedPhoto.width} / ${selectedPhoto.height}))`,
+						}}
+					>
+						<Image
+							src={selectedPhoto.public_id}
+							alt={selectedPhoto.context?.custom?.alt ?? ""}
+							fill
+							sizes="95vw"
+							priority
+							placeholder={
+								selectedPhoto.blurDataURL ? "blur" : "empty"
+							}
+							blurDataURL={selectedPhoto.blurDataURL}
+							className="object-contain"
+						/>
+					</div>
 				</div>
 			)}
 		</>
