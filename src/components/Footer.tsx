@@ -3,7 +3,7 @@ import Icon from "./Icon";
 
 const LINKS = [
 	{
-		href: "mailto:arshanwer91@gmail.com",
+		href: "mailto:contact@arshadanwer.com",
 		label: "email",
 		icon: Mail,
 		external: false,
