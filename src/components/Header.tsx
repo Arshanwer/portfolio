@@ -34,7 +34,7 @@ export default function Header() {
 									<Link
 										href={link.href}
 										aria-current={active ? "page" : undefined}
-										className={`inline-flex border-b-2 py-1 text-sm tracking-tight transition-colors duration-200 motion-reduce:transition-none ${
+										className={`inline-flex border-b-2 py-1 text-sm tracking-tight transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent motion-reduce:transition-none ${
 											active
 												? "border-accent text-foreground"
 												: "border-transparent text-muted hover:text-foreground"
@@ -81,7 +81,7 @@ export default function Header() {
 										href={link.href}
 										onClick={() => setOpen(false)}
 										aria-current={active ? "page" : undefined}
-										className={`flex items-center gap-2 py-3 text-sm tracking-tight transition-colors duration-200 motion-reduce:transition-none ${
+										className={`flex items-center gap-2 py-3 text-sm tracking-tight transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent motion-reduce:transition-none ${
 											active
 												? "text-foreground"
 												: "text-muted hover:text-foreground"
