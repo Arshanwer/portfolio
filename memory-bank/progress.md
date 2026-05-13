@@ -186,14 +186,19 @@
 
 ### Next Immediate Action
 
-**Chunk 9 — Responsive + accessibility pass** (ready to begin)
-Systematic sweep across all routes at 375 / 768 / 1024 / 1280 / 1920 in both themes. Keyboard tab-order, focus rings, screen reader landmarks. Confirm moss accent (`#4D7619`, contrast 4.74:1 — thin margin above WCAG AA 4.5:1) still feels right after seeing the whole site polished, or tune.
+**Chunk 9 — Responsive + accessibility pass** (in progress)
 
-**User setup required before `/photography` is live:** create Cloudinary account (free tier, 25 GB storage / 25 GB bandwidth), upload photos to a folder named `portfolio`, copy `.env.local.example` → `.env.local`, fill in the three Cloudinary keys. Restart dev server. New uploads appear within an hour via ISR. See chunk 8 entry above for the full setup checklist.
+**Code-level a11y audit done + fixes landed (`e4335c8`, 2026-05-13):**
+- `tabIndex={-1}` added to `<main>` in `layout.tsx` so the skip-to-content link actually moves focus, not just scroll
+- `ThemeToggle` `aria-label` is now state-aware — announces target state ("Switch to dark/light theme") so SR users know toggle direction
+- `Hero` `<section>` gained `aria-labelledby="hero-heading"` matching the pattern used by every other section
+- `/photography` alt prop has a code comment documenting that per-image alt should be set via Cloudinary console (Settings → Asset → Metadata → Context → alt). Empty fallback is acceptable because the parent section heading provides gallery context; bulk-generic alt would be noise.
 
-**Verification gaps to address during chunk 9:**
-- Automated visual verification at 1920 / 1280 / 768 / 375 in light + dark was not run on any chunk in this session (Playwright lock conflict with a stale browser session). Visual review was done by the user on live preview, which surfaced multiple issues (whole-card-clickable → `d77ac2a`; section padding mismatch → `704fd26`; light accent felt heavy → `20a6577`). Pre-push spot-check at all breakpoints still recommended; chunk 9 is the place to do this systematically.
-- Light-mode accent at 4.74:1 contrast is thin — close to the AA floor. Worth re-checking against the final content set during chunk 9 to confirm decorative accent uses (dots, glyphs, borders) still feel intentional rather than washed out.
+**Contrast verified in both modes** — text and muted text both pass WCAG AA with margin (light: 15.98:1 text, 6.03:1 muted; dark: 16.36:1 text, 5.74:1 muted). Light-mode accent at 4.74:1 (thin AA margin) was already accepted in the moss decision; dark-mode accent at 12.12:1 is AAA.
+
+**Still pending:** **visual responsive verification at 375 / 768 / 1024 / 1280 / 1920 in both themes** — needs user since Playwright MCP plugin is offline for this session. Previous live reviews surfaced multiple issues (whole-card-clickable → `d77ac2a`; section padding mismatch → `704fd26`; light accent felt heavy → `20a6577`). A systematic pass across the breakpoint set on `/`, `/work`, `/photography` in both light and dark is the remaining work.
+
+**User setup still pending for `/photography` to render in production:** see chunk 8 entry — Cloudinary account, env vars, dev server restart.
 
 **Deferred to chunk 10 polish:** dim-on-hover for active experience card.
 
