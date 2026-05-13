@@ -7,7 +7,7 @@
 3. ✅ Home Hero — `eea25da`
 4. ✅ Home About + Experience timeline + chrome-edge layout — `bfe9b80`
 5. ✅ Home Contact strip + footer email sync — `4d2a6ff`
-6. ✅ `/work` index — Pixxellent featured card — `e7eae10`
+6. ✅ `/work` index — Pixxellent featured card — `e7eae10` + `d77ac2a` (post-review refactor)
 7. 🟡 `/work/pixxellent` case study — next
 8. 🔲 `/photography` gallery
 9. 🔲 Responsive + accessibility pass
@@ -98,7 +98,7 @@
 
 **Work (`/work`, `/work/[slug]`)** — Index ✅ `e7eae10`
 
-- ✅ `/work` index — `#work` heading + Pixxellent featured card. Whole-card `<a>` to `https://contributor.pixxellent.com` (external, new tab) — pattern chosen for forward scalability when more cards land. Card chrome: thin `border-border` rectangle, accent border + accent visit-line on hover/focus, `aria-label` for clean screen-reader announcement. Body trimmed to 3 sentences (what / stack / how it ships). Stack chips: Next.js, TypeScript, Fastify, PostgreSQL, Redis, RabbitMQ, AWS ECS, GitHub Actions. Mono comment-style `// more projects landing through 2026` note below the card.
+- ✅ `/work` index — `#work` heading + Pixxellent featured card. Card chrome: thin `border-border` rectangle, static (no hover state on the card itself). Body trimmed to 3 sentences (what / stack / how it ships). Stack chips: Next.js, TypeScript, Fastify, PostgreSQL, Redis, RabbitMQ, AWS ECS, GitHub Actions. **Click target is the explicit "visit contributor.pixxellent.com ↗" inline link only** — initially built as a whole-card `<a>` (`e7eae10`) but reverted after visual review (`d77ac2a`) because the all-clickable surface felt heavier than the content warranted and broke text-selection of stack/body. Pattern to apply for future cards: explicit inline link as the call-to-action, not whole-surface. Mono comment-style `// more projects landing through 2026` note below the card.
 - 🔲 `/work/pixxellent` case study — problem, approach, stack, screenshots, live link
 
 **Photography (`/photography`)**
@@ -181,9 +181,9 @@
 ### Next Immediate Action
 
 **Chunk 7 — `/work/pixxellent` case study** (ready to begin)
-Build the dedicated case study page at `/work/pixxellent`. Problem framing → approach → stack → screenshots → live link. Reuses the centered `max-w-5xl` column convention and `#` accent prefix for sub-headings. Open question to resolve at start of next session: does the /work index card stay as the whole-card external link to the live site, or pivot to point at this case study once it exists? (The locked decision from chunk 6 was to keep it on the live site, with case studies treated as a separate layer — confirm before changing.) Consider whether to add a "case study →" secondary affordance on the index card after this lands.
+Build the dedicated case study page at `/work/pixxellent`. Problem framing → approach → stack → screenshots → live link. Reuses the centered `max-w-5xl` column convention and `#` accent prefix for sub-headings. Once it exists, the /work index card should grow a second inline link — "case study →" — alongside the existing "visit contributor.pixxellent.com ↗" external link. Two explicit links, both inline, no whole-card click target (locked pattern from chunk 6 post-review).
 
-**Verification gap from chunk 6:** automated visual verification at 1920 / 1280 / 768 / 375 in light + dark was not run (Playwright lock conflict with a stale browser session). Spot-check the `/work` index manually before push.
+**Verification gap from chunk 6:** automated visual verification at 1920 / 1280 / 768 / 375 in light + dark was not run (Playwright lock conflict with a stale browser session). Visual review was done by the user on live preview, which surfaced the whole-card-clickable issue and drove the `d77ac2a` refactor. Pre-push spot-check at all breakpoints still recommended before the design/v2 branch ships.
 
 **Deferred to chunk 10 polish:** dim-on-hover for active experience card.
 
