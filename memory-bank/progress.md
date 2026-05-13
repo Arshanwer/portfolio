@@ -6,8 +6,8 @@
 2. ✅ Header + Footer + layout shell + `/work` and `/photography` stubs — `6c7573a`
 3. ✅ Home Hero — `eea25da`
 4. ✅ Home About + Experience timeline + chrome-edge layout — `bfe9b80`
-5. 🟡 Home Contact strip — next
-6. 🔲 `/work` index
+5. ✅ Home Contact strip + footer email sync — `4d2a6ff`
+6. 🟡 `/work` index — next
 7. 🔲 `/work/pixxellent` case study
 8. 🔲 `/photography` gallery
 9. 🔲 Responsive + accessibility pass
@@ -88,13 +88,13 @@
 - ✅ Server-component compatibility — removed orphan `"use client"` from `Icon.tsx` per archived warning (it was breaking server-rendered Footer)
 - ✅ Resume PDF wired — `reference/ArshadAnwerResume.pdf` copied to `public/resume.pdf`, served at `/resume.pdf` (200, application/pdf, 153 KB)
 
-**Home Page (`/`)** — Hero ✅ `eea25da` · About + Experience ✅ `bfe9b80`
+**Home Page (`/`)** — Hero ✅ `eea25da` · About + Experience ✅ `bfe9b80` · Contact ✅ `4d2a6ff`
 
 - ✅ Hero — `Arshad Anwer` in Geist Sans 900 at `text-display-hero` clamp(56px → 144px); role + location in Geist Mono; one-line summary with accent underline on "infrastructure" as the earned accent moment; no headshot; type fills the space at all breakpoints (≥1024 the name now wraps to 2 lines inside the shared column — endorsed by design-direction.md "rebalance to two lines if needed", reads as poster-stacked)
 - ✅ About — 3 first-person paragraphs (BSc Hons Staffordshire 2013 folded into ¶2), mono prose at `max-w-2xl`
 - ✅ Experience timeline — reverse-chrono entries (Totara DevOps, Totara FE, Qijang, SEB) with date column, trimmed outcome bullets, accent dot on the current role, tech chips via new `Chip` component
 - ✅ Chrome-edge layout — Hero/About/Experience anchored to centered `max-w-5xl` column; Header + Footer content pushed to viewport edges (`px-6 sm:px-8 lg:px-12`) so chrome frames the document at all sizes
-- 🔲 Contact strip — email, GitHub, LinkedIn, location
+- ✅ Contact strip — `#contact` heading, short tagline, email as primary inline CTA in mono (text-xl → text-3xl, persistent accent underline, hover shifts text color to accent), github/linkedin/resume secondary row, `↘ wellington, nz · open to remote` location label. Footer email reconciled to `contact@arshadanwer.com` per resume.
 
 **Work (`/work`, `/work/[slug]`)**
 
@@ -168,7 +168,7 @@
 
 ## Current Status
 
-### Project Phase: **Phase 2 — v2 Visual Rebuild & Site Structure** (in progress — 4 of 10 chunks done)
+### Project Phase: **Phase 2 — v2 Visual Rebuild & Site Structure** (in progress — 5 of 10 chunks done)
 
 **Completion Overview**
 
@@ -180,8 +180,8 @@
 
 ### Next Immediate Action
 
-**Chunk 5 — Home Contact strip** (ready to begin)
-A dedicated "get in touch" moment sitting above the global footer on `/`. Distinct from the footer's compact link row — this should be the page's last big moment, sized like an invitation rather than a utility row. Pull email + GitHub + LinkedIn + location from the same source the footer uses (so links stay in sync). Consider: large mono email as the primary CTA with a hover accent; secondary links smaller; location as a quiet label. Section pattern continues the `#contact` heading + centered `max-w-5xl` column convention established in chunk 4. Open question: should the email be a `<button>` that copies to clipboard with a toast, or just a `mailto:` link? Default to `mailto:` for restraint — revisit only if it feels under-served.
+**Chunk 6 — `/work` index** (ready to begin)
+Replace the route stub at `/work` with a real index page. Pixxellent should be the featured card (problem framing, stack chips, "case study →" link to `/work/pixxellent`, and a "live →" link to `www.contributor.pixxellent.com`). Leave room for future projects without inventing placeholders — the simplest pattern is one featured card now, with the grid/list shape ready for additions. Page reuses the `#work` heading + centered `max-w-5xl` column convention, with cards in mono-leaning chrome (border + sparse accent). Confirm whether the case study route exists at `/work/pixxellent` (chunk 7) before linking, or leave the link as a stub for now. Open question: should the card link to the live site directly, or to the case study, or both?
 
 **Deferred to chunk 10 polish:** dim-on-hover for active experience card.
 
