@@ -9,7 +9,7 @@
 5. ✅ Home Contact strip + footer email sync — `4d2a6ff`
 6. ✅ `/work` index — Pixxellent featured card — `e7eae10` + `d77ac2a` (post-review refactor) + `c221cf3` (problem framing + queue specifics)
 7. ⏭ `/work/pixxellent` case study — **deferred to Phase 4** (see "Future-Ready"). Card now carries the framing the case study would have duplicated; revisit when there are screenshots and lessons-learned from the live beta worth a dedicated page.
-8. 🟡 `/photography` gallery — next
+8. ✅ `/photography` gallery — Cloudinary integration + CSS multi-column masonry — `6fe1dd6` (pending Cloudinary credentials)
 9. 🔲 Responsive + accessibility pass
 10. 🔲 Polish + motion + final accent audit
 
@@ -101,11 +101,15 @@
 - ✅ `/work` index — `#work` heading + Pixxellent featured card. Card chrome: thin `border-border` rectangle, static (no hover state on the card itself). Body carries two paragraphs (`c221cf3`): problem framing (origin as personal photo showcase → scope expansion into curated stock-asset platform → roadmap past photos into video and other digital asset types) and technical body (Next.js/Fastify/PostgreSQL stack with concrete RabbitMQ queue contents — transactional emails, S3 image tagging, image processing). Stack chips: Next.js, TypeScript, Fastify, PostgreSQL, Redis, RabbitMQ, AWS ECS, GitHub Actions. **Click target is the explicit "visit contributor.pixxellent.com ↗" inline link only** — initially built as a whole-card `<a>` (`e7eae10`) but reverted after visual review (`d77ac2a`) because the all-clickable surface felt heavier than the content warranted and broke text-selection of stack/body. Pattern to apply for future cards: explicit inline link as the call-to-action, not whole-surface. Mono comment-style `// more projects landing through 2026` note below the card.
 - ⏭ `/work/pixxellent` case study — deferred. Decided 2026-05-13: with current content (resume bullets + problem framing), a dedicated case study would mostly duplicate the index card. Defer until there's substantive content worth its own route — screenshots from the live site, architectural deep-dives, lessons-learned from production. Tracked under Phase 4 / Future-Ready.
 
-**Photography (`/photography`)**
+**Photography (`/photography`)** — Gallery ✅ `6fe1dd6` (pending credentials)
 
-- 🔲 Masonry / mixed-aspect grid gallery
-- 🔲 Image optimization via next/image
-- 🔲 Optional category grouping if photo set warrants it
+- ✅ CSS multi-column masonry (`columns-1 sm:columns-2 lg:columns-3`) — pure CSS, no JS, works everywhere. Reading order is column-down; fine for a photo grid with no captions.
+- ✅ Image optimization via `next/image` with a custom Cloudinary `loader` — transformations handled by Cloudinary URL params (`w_{width},q_auto,f_auto,c_limit`). No Vercel optimization budget consumed.
+- ✅ Cloudinary fetch — Server Component reads from Cloudinary's `/resources/search` Admin API, sorted by `created_at` desc, max 100. ISR via `revalidate = 3600` so new uploads appear within an hour without a redeploy.
+- ✅ Empty state — when env vars are absent or the API returns nothing, page renders a mono `// gallery wiring up — photos go live once Cloudinary is connected` note instead of an empty grid.
+- ✅ Env scaffolding — `.env.local.example` documents required vars. `.gitignore` updated to allow the example file through. `next.config.ts` `remotePatterns` allows `res.cloudinary.com`.
+- 🔲 **User setup required before gallery is live:** create Cloudinary account (free tier), upload photos to a folder named `portfolio` (or override via `CLOUDINARY_FOLDER` env var), copy `.env.local.example` → `.env.local`, fill in `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET` from Cloudinary console. Set the same env vars in Vercel project settings for production.
+- 🔲 Optional category grouping — deferred until photo set warrants it. Cloudinary's search expression supports tag-based filtering, so this is a small follow-up if needed.
 
 ### Phase 3: Component Library & Polish
 
@@ -169,7 +173,7 @@
 
 ## Current Status
 
-### Project Phase: **Phase 2 — v2 Visual Rebuild & Site Structure** (in progress — 6 of 10 chunks done; chunk 7 deferred to Phase 4)
+### Project Phase: **Phase 2 — v2 Visual Rebuild & Site Structure** (in progress — 7 of 10 chunks done; chunk 7 deferred to Phase 4)
 
 **Completion Overview**
 
@@ -181,12 +185,14 @@
 
 ### Next Immediate Action
 
-**Chunk 8 — `/photography` gallery** (ready to begin)
-Replace the route stub at `/photography` with a real gallery. Masonry / mixed-aspect grid; image optimization via `next/image`. Optional category grouping if the photo set warrants it. Open content question to resolve at start of next session: which photos go in, where do they live (`/public` vs externally hosted), and do they need category labels or is a single grid enough? No content currently in `/reference` for the gallery, so this chunk needs user-provided photo files or URLs before building.
+**Chunk 9 — Responsive + accessibility pass** (ready to begin)
+Systematic sweep across all routes at 375 / 768 / 1024 / 1280 / 1920 in both themes. Keyboard tab-order, focus rings, screen reader landmarks. Confirm moss accent (`#4D7619`, contrast 4.74:1 — thin margin above WCAG AA 4.5:1) still feels right after seeing the whole site polished, or tune.
 
-**Verification gaps to address before the design/v2 branch ships:**
-- Automated visual verification at 1920 / 1280 / 768 / 375 in light + dark was not run on any chunk in this session (Playwright lock conflict with a stale browser session). Visual review was done by the user on live preview, which surfaced both the whole-card-clickable issue (drove `d77ac2a`) and the section-padding mismatch (drove `704fd26`). Pre-push spot-check at all breakpoints still recommended.
-- Light-mode accent was swapped from `#3F5C1C` (forest) to `#4D7619` (moss) on 2026-05-13 after live review; contrast verified at 4.74:1 (just above WCAG AA 4.5:1, thin margin). Worth a final accessibility audit during chunk 9.
+**User setup required before `/photography` is live:** create Cloudinary account (free tier, 25 GB storage / 25 GB bandwidth), upload photos to a folder named `portfolio`, copy `.env.local.example` → `.env.local`, fill in the three Cloudinary keys. Restart dev server. New uploads appear within an hour via ISR. See chunk 8 entry above for the full setup checklist.
+
+**Verification gaps to address during chunk 9:**
+- Automated visual verification at 1920 / 1280 / 768 / 375 in light + dark was not run on any chunk in this session (Playwright lock conflict with a stale browser session). Visual review was done by the user on live preview, which surfaced multiple issues (whole-card-clickable → `d77ac2a`; section padding mismatch → `704fd26`; light accent felt heavy → `20a6577`). Pre-push spot-check at all breakpoints still recommended; chunk 9 is the place to do this systematically.
+- Light-mode accent at 4.74:1 contrast is thin — close to the AA floor. Worth re-checking against the final content set during chunk 9 to confirm decorative accent uses (dots, glyphs, borders) still feel intentional rather than washed out.
 
 **Deferred to chunk 10 polish:** dim-on-hover for active experience card.
 
