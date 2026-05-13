@@ -48,7 +48,9 @@ export default function RootLayout({
 					skip to content
 				</a>
 				<Header />
-				<main id="main">{children}</main>
+				<main id="main" tabIndex={-1}>
+					{children}
+				</main>
 				<Footer />
 			</body>
 		</html>

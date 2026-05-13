@@ -1,7 +1,13 @@
 export default function Hero() {
 	return (
-		<section className="mx-auto max-w-5xl px-6 pt-20 pb-24 sm:px-8 sm:pt-28 sm:pb-32 lg:px-12 lg:pt-32 lg:pb-40">
-			<h1 className="font-sans text-display-hero font-black leading-[0.92] tracking-tight text-foreground">
+		<section
+			aria-labelledby="hero-heading"
+			className="mx-auto max-w-5xl px-6 pt-20 pb-24 sm:px-8 sm:pt-28 sm:pb-32 lg:px-12 lg:pt-32 lg:pb-40"
+		>
+			<h1
+				id="hero-heading"
+				className="font-sans text-display-hero font-black leading-[0.92] tracking-tight text-foreground"
+			>
 				Arshad Anwer
 			</h1>
 			<p className="mt-8 text-sm leading-relaxed text-muted sm:text-base">

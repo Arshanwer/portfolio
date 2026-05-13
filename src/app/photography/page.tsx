@@ -38,6 +38,10 @@ export default async function Photography() {
 							key={photo.public_id}
 							className="mb-4 break-inside-avoid sm:mb-5 lg:mb-6"
 						>
+							{/* alt is read from Cloudinary's contextual metadata
+							    (Settings → Asset → Metadata → Context → alt).
+							    Empty fallback is acceptable here because the
+							    parent section's heading provides gallery context. */}
 							<Image
 								src={photo.public_id}
 								alt={photo.context?.custom?.alt ?? ""}
