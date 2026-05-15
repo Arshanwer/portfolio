@@ -1,3 +1,9 @@
+export const RESUME_URL = (() => {
+	const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+	if (!cloudName) return "/resume.pdf";
+	return `https://res.cloudinary.com/${cloudName}/image/upload/ArshadAnwerCv.pdf`;
+})();
+
 export interface CloudinaryPhoto {
 	public_id: string;
 	width: number;

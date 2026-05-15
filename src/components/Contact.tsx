@@ -1,5 +1,6 @@
 import { Github, Linkedin, FileText } from "lucide-react";
 import Icon from "./Icon";
+import { RESUME_URL } from "@/lib/cloudinary";
 
 const SECONDARY_LINKS = [
 	{
@@ -15,7 +16,7 @@ const SECONDARY_LINKS = [
 		external: true,
 	},
 	{
-		href: "/resume.pdf",
+		href: RESUME_URL,
 		label: "resume",
 		icon: FileText,
 		external: true,
