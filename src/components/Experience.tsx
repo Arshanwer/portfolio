@@ -17,8 +17,8 @@ const ROLES: Role[] = [
 		current: true,
 		bullets: [
 			"Architected AWS EC2 and ECS environments with Terraform and Ansible — standardized internal platform for demo and test fleets.",
-			"Modernized the path-to-production with cloud-native GitHub Actions pipelines, cutting deployment friction and lifting release velocity.",
-			"Led the end-to-end migration from self-hosted Bitbucket to GitHub Enterprise Cloud, including automated metadata transfer and repo restructuring.",
+			"Built the cloud-native GitHub Actions pipelines that replaced the legacy path-to-production — releases got faster and a lot less painful.",
+			"Shipped the migration from self-hosted Bitbucket to GitHub Enterprise Cloud — automated metadata transfer, restructured repos along the way.",
 			"Built internal CLI tools and cloud integrations in Node.js / TypeScript (with Vitest) to replace brittle legacy scripts engineers had been working around.",
 		],
 		tech: [
@@ -37,9 +37,9 @@ const ROLES: Role[] = [
 		dates: "Feb 2020 — Jan 2025",
 		bullets: [
 			"Maintained strict WCAG 2.1 AA accessibility compliance across all products.",
-			"Built a library of reusable Vue.js core components with high Jest coverage, accelerating downstream feature work.",
+			"Built reusable Vue.js components for the team's ever-growing core library, with strong Jest coverage.",
 			"Partnered with the backend team on GraphQL API design and consumption across the frontend.",
-			"Architected a scalable, readable CSS structure using BEM methodology.",
+			"Architected clean, readable CSS across the components I worked on, following the team's BEM methodology.",
 		],
 		tech: ["Vue.js", "TypeScript", "GraphQL", "Jest", "BEM"],
 	},
@@ -48,10 +48,10 @@ const ROLES: Role[] = [
 		title: "Senior Software Engineer",
 		dates: "May 2019 — Jan 2020",
 		bullets: [
-			"Architected and delivered a scalable Warehouse Management System with integrated mobile fulfillment, now supporting a growing client base.",
-			"Built a modular React / TypeScript component library to standardize development across projects.",
+			"Architected and delivered a Warehouse Management System with mobile fulfillment baked in, still supporting a rapidly growing client base.",
+			"Built a modular React / TypeScript component library that pulled the team onto a shared foundation.",
 			"Mentored junior developers across React and Angular, reducing onboarding time.",
-			"Prototyped a React Native cross-platform app to validate product-market fit.",
+			"Prototyped a React Native app to test whether the idea had legs.",
 		],
 		tech: ["React", "TypeScript", "Angular", "React Native", "Rasa"],
 	},
@@ -61,9 +61,9 @@ const ROLES: Role[] = [
 		dates: "Mar 2015 — May 2019",
 		bullets: [
 			"Built an insurance advisory system the CEO presented at the 2016 annual meeting as a stepping-stone of innovation.",
-			"Contributed to a large-scale frontend migration from Angular 6 to React (TypeScript).",
-			"Designed scalable state management patterns with Redux and NGXS across complex React / Angular applications.",
-			"Pushed .NET backend code coverage past 85% and led a cross-functional .NET / frontend team delivering localized solutions for the Irish market.",
+			"Shipped the bulk of a large-scale frontend migration from Angular 6 to React (TypeScript).",
+			"Designed state management patterns with Redux and NGXS across the React and Angular apps.",
+			"Pushed .NET backend coverage past 85% and led a mixed .NET / frontend team building the Irish-market version of the product.",
 		],
 		tech: [
 			"React",

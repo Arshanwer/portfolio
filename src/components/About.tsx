@@ -26,13 +26,12 @@ export default function About() {
 					tooling that replaces brittle legacy scripts.
 				</p>
 				<p>
-					I care about the parts of software that are easy to overlook
-					&mdash; accessibility that actually meets WCAG AA, components
-					other engineers want to reuse, deployment paths that fail
-					clearly. I trained as a software engineer (BSc Hons, University
-					of Staffordshire, 2013), and the underlying instinct
-					hasn&rsquo;t changed: build the thing well, then make it boring
-					to operate.
+					The parts of software I care about are usually the ones easy
+					to ignore &mdash; the seams between the front-end, back-end,
+					and data that hold up as the system grows, components other
+					engineers reach for, deploys that fail loudly when they fail.
+					The underlying instinct hasn&rsquo;t really changed: build it
+					properly, then make it dull to run.
 				</p>
 				<p>
 					Outside work I shoot photography, which is partly why I&rsquo;m

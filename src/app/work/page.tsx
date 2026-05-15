@@ -53,13 +53,13 @@ export default function WorkIndex() {
 								side for years. The scope kept expanding, and it&rsquo;s
 								now a curated stock-asset platform where contributors
 								publish high-resolution work and a broader audience gets
-								to use it. The plan reaches past photos: video is next,
-								then other digital asset types over time. Curation and
-								community matter more than volume.
+								to use it. It won&rsquo;t stop at photos &mdash; video
+								is next, then other digital asset types over time.
+								Curation and community matter more than volume.
 							</p>
 							<p>
-								Built end-to-end with Next.js (React, TypeScript) on the
-								frontend, Fastify on Node.js for the backend, and
+								Built top to bottom with Next.js (React, TypeScript) on
+								the frontend, Fastify on Node.js for the backend, and
 								PostgreSQL as the primary datastore. Redis handles
 								caching; RabbitMQ queues transactional emails, image
 								tagging in S3, and image processing. Deployment runs

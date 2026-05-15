@@ -12,17 +12,14 @@ export default function Hero() {
 			</h1>
 			<p className="mt-8 text-sm leading-relaxed text-muted sm:text-base">
 				senior software engineer
-				<span
-					className="mx-2 hidden sm:inline"
-					aria-hidden="true"
-				>
+				<span className="mx-2 hidden sm:inline" aria-hidden="true">
 					·
 				</span>
 				<br className="sm:hidden" />
 				wellington, nz
 			</p>
 			<p className="mt-6 max-w-2xl text-base leading-relaxed text-foreground sm:text-lg">
-				eleven years building enterprise web apps; lately, the{" "}
+				eleven years building enterprise web apps. Lately, the{" "}
 				<span className="underline decoration-accent decoration-2 underline-offset-[6px]">
 					infrastructure
 				</span>{" "}
