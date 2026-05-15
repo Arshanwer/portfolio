@@ -42,22 +42,22 @@ export default async function Photography() {
 					<span aria-hidden="true" className="text-accent">
 						↘
 					</span>{" "}
-					more where this came from
+					if you shoot too
 				</p>
 				<p className="mt-4 max-w-xl text-base leading-relaxed text-foreground sm:text-[15px]">
-					Higher-resolution work &mdash; and a contributor program if
-					you shoot too &mdash; lives on Pixxellent, the stock-asset
-					platform I&rsquo;m building.
+					Pixxellent is the digital asset platform I&rsquo;m building
+					for high-resolution work. The contributor side is live in
+					private beta; the public-facing site is coming.
 				</p>
 				<p className="mt-6">
 					<a
-						href="https://pixxellent.com"
+						href="https://contributor.pixxellent.com"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="inline-flex items-center gap-1.5 font-mono text-sm text-foreground transition-colors duration-200 hover:text-accent focus-visible:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent motion-reduce:transition-none sm:text-base"
 					>
 						<span className="underline decoration-accent decoration-2 underline-offset-[6px]">
-							visit pixxellent.com
+							visit contributor.pixxellent.com
 						</span>
 						<Icon
 							icon={ArrowUpRight}
