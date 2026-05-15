@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/styles/globals.css";
 import Header from "@/components/Header";
@@ -12,6 +13,17 @@ const geistMono = Geist_Mono({
 	variable: "--font-geist-mono",
 	subsets: ["latin"],
 });
+
+export const metadata: Metadata = {
+	icons: {
+		icon: [
+			{ url: "/favicon.ico", sizes: "any" },
+			{ url: "/favicon.svg", type: "image/svg+xml" },
+		],
+		apple: "/apple-touch-icon.png",
+	},
+	manifest: "/site.webmanifest",
+};
 
 export default function RootLayout({
 	children,
