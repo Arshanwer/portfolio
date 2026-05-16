@@ -12,6 +12,7 @@ Branch: `design-revamp-v3` (cut from clean `main`). Plan file: `~/.claude/plans/
 
 - ✅ **Readability bump** — `daee532`. Sub-12px Geist Mono was below the practical readable floor. Bumped sidebar menu/social/email 11 → 14px (text-sm), section labels 9 → 11px, eyebrows 10 → 12px, hero intro 13/14 → 14/16px, work/project descriptions 11 → 14px, stack category labels 10 → 12px, hero status pulse + scroll hint 10–11 → 12px, project page body 13 → 14–16px. Hierarchy preserved — each tier just shifted above its readable floor.
 - ✅ **Work CTA simplification** — `494bb0f`. Per-row resume link removed; rows are now plain static cards. A single `↗ view full resume` link sits below the list as the canonical exit point. The repeated per-row hover-shift implied each item had its own deep-link when in reality every row pointed to the same PDF.
+- ✅ **Sidebar identity + menu size** — `ec641e3`. Dropped the bold two-line name from `SidebarContent` (desktop sidebar + mobile drawer) — on home it duplicated the giant hero name, on other routes the role + URL + route headline carry identity. Mobile top bar keeps the inline name as the only persistent identifier when the drawer is closed. Menu + social items bumped from 14 → 16px (text-base) to sit at the conventional nav floor; contact email stays at 13px so it doesn't overflow the 140px sidebar content area.
 
 ## v3 — open follow-ups (not blocking ship)
 
