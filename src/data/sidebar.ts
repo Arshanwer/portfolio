@@ -18,7 +18,12 @@ export const LOCATION_LINE = "wellington, nz";
 export const MENU: MenuItem[] = [
 	{ label: "home", href: "/", sectionId: "hello" },
 	{ label: "work", href: "/#work", sectionId: "work" },
-	{ label: "projects", href: "/#projects", sectionId: "projects" },
+	{
+		label: "projects",
+		href: "/#projects",
+		sectionId: "projects",
+		routeMatch: "/projects",
+	},
 	{ label: "stack", href: "/#stack", sectionId: "stack" },
 	{
 		label: "photography",
@@ -45,3 +50,26 @@ export const CONTACT_EMAIL = "contact@arshadanwer.com";
 export const SECTION_IDS = MENU.map((item) => item.sectionId).filter(
 	(id): id is string => Boolean(id)
 );
+
+export function resolveActiveLabel(
+	pathname: string,
+	activeSection: string | null
+): string | null {
+	const routeMatch = MENU.find(
+		(item) =>
+			item.routeMatch &&
+			(pathname === item.routeMatch ||
+				pathname.startsWith(item.routeMatch + "/"))
+	);
+	if (routeMatch) return routeMatch.label;
+	if (pathname === "/") {
+		if (activeSection) {
+			const sectionMatch = MENU.find(
+				(item) => item.sectionId === activeSection
+			);
+			if (sectionMatch) return sectionMatch.label;
+		}
+		return "home";
+	}
+	return null;
+}

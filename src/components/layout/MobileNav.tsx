@@ -5,29 +5,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import Icon from "../Icon";
-import { MENU, NAME_LINES, SECTION_IDS } from "@/data/sidebar";
+import {
+	NAME_LINES,
+	SECTION_IDS,
+	resolveActiveLabel,
+} from "@/data/sidebar";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import SidebarContent from "./SidebarContent";
-
-function resolveActiveLabel(
-	pathname: string,
-	activeSection: string | null
-): string | null {
-	const routeMatch = MENU.find(
-		(item) => item.routeMatch && pathname === item.routeMatch
-	);
-	if (routeMatch) return routeMatch.label;
-	if (pathname === "/") {
-		if (activeSection) {
-			const sectionMatch = MENU.find(
-				(item) => item.sectionId === activeSection
-			);
-			if (sectionMatch) return sectionMatch.label;
-		}
-		return "home";
-	}
-	return null;
-}
 
 export default function MobileNav() {
 	const pathname = usePathname();
