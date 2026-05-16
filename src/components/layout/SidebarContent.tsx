@@ -5,7 +5,6 @@ import {
 	CONTACT_EMAIL,
 	LOCATION_LINE,
 	MENU,
-	NAME_LINES,
 	ROLE_LINE,
 	SOCIAL,
 } from "@/data/sidebar";
@@ -25,18 +24,7 @@ export default function SidebarContent({
 	return (
 		<div className="flex h-full flex-col">
 			<div>
-				<Link
-					href="/"
-					onClick={onNavigate}
-					className="block font-sans text-base font-extrabold leading-[1.1] tracking-tight text-foreground"
-				>
-					{NAME_LINES.map((line) => (
-						<span key={line} className="block">
-							{line}
-						</span>
-					))}
-				</Link>
-				<p className="mt-3 font-mono text-[11px] lowercase tracking-[0.08em] text-muted">
+				<p className="font-mono text-[11px] lowercase tracking-[0.08em] text-muted">
 					{ROLE_LINE}
 				</p>
 				<p className="font-mono text-[11px] lowercase tracking-[0.08em] text-muted">
@@ -63,7 +51,7 @@ export default function SidebarContent({
 									href={item.href}
 									onClick={onNavigate}
 									aria-current={ariaCurrent}
-									className={`group flex items-center gap-2 font-mono text-sm tracking-tight transition-colors duration-200 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent motion-reduce:transition-none ${
+									className={`group flex items-center gap-2 font-mono text-base tracking-tight transition-colors duration-200 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent motion-reduce:transition-none ${
 										isActive ? "text-foreground" : "text-muted"
 									}`}
 								>
@@ -103,7 +91,7 @@ export default function SidebarContent({
 								target="_blank"
 								rel="noopener noreferrer"
 								onClick={onNavigate}
-								className="flex items-center gap-2 font-mono text-sm tracking-tight text-muted transition-colors duration-200 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent motion-reduce:transition-none"
+								className="flex items-center gap-2 font-mono text-base tracking-tight text-muted transition-colors duration-200 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent motion-reduce:transition-none"
 							>
 								<span aria-hidden="true" className="inline-block w-3 opacity-0">
 									→
