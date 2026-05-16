@@ -13,7 +13,7 @@ export default function ThoughtsPage() {
 		<article className="px-6 pt-20 pb-24 sm:px-10 sm:pt-24 sm:pb-28 lg:px-16 lg:pt-28">
 			<SectionEyebrow number="06" label="thoughts" />
 
-			<p className="mt-6 font-mono text-[11px] uppercase tracking-[0.14em] text-accent">
+			<p className="mt-6 font-mono text-xs uppercase tracking-[0.14em] text-accent">
 				<span aria-hidden="true">[ </span>coming soon
 				<span aria-hidden="true"> ]</span>
 			</p>
@@ -22,7 +22,7 @@ export default function ThoughtsPage() {
 				a blog about building things that don&rsquo;t break
 			</h1>
 
-			<div className="mt-10 max-w-[640px] space-y-5 font-mono text-[13px] leading-[1.7] text-muted">
+			<div className="mt-10 max-w-[640px] space-y-5 font-mono text-sm leading-[1.7] text-muted sm:text-base">
 				<p>
 					The posts I&rsquo;d like to write live at the seam between
 					front-end and platform &mdash; reliable releases, internal

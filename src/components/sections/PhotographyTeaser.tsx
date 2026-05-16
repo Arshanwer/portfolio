@@ -54,14 +54,16 @@ export default async function PhotographyTeaser() {
 			<p className="mt-8">
 				<Link
 					href="/photography"
-					className="group inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-foreground transition-colors duration-200 hover:text-accent focus-visible:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent motion-reduce:transition-none"
+					className="group inline-flex items-center gap-1.5 font-mono text-sm tracking-tight text-foreground transition-colors duration-200 hover:text-accent focus-visible:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent motion-reduce:transition-none"
 				>
-					<span>view full gallery</span>
+					<span className="underline decoration-accent decoration-2 underline-offset-[6px]">
+						view full gallery
+					</span>
 					<Icon
 						icon={ArrowRight}
 						size={14}
 						aria-hidden="true"
-						className="transition-transform duration-200 ease-out group-hover:translate-x-[2px] motion-reduce:transition-none"
+						className="text-accent transition-transform duration-200 ease-out group-hover:translate-x-[2px] motion-reduce:transition-none"
 					/>
 				</Link>
 			</p>

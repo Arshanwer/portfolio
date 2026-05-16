@@ -10,7 +10,7 @@ export default function ThoughtsTeaser() {
 		>
 			<SectionEyebrow number="06" label="thoughts" />
 
-			<p className="mt-6 font-mono text-[11px] uppercase tracking-[0.14em] text-accent">
+			<p className="mt-6 font-mono text-xs uppercase tracking-[0.14em] text-accent">
 				<span aria-hidden="true">[ </span>coming soon
 				<span aria-hidden="true"> ]</span>
 			</p>
@@ -27,7 +27,7 @@ export default function ThoughtsTeaser() {
 				</Link>
 			</h2>
 
-			<p className="mt-8 max-w-[640px] font-mono text-xs leading-[1.7] text-muted sm:text-[13px]">
+			<p className="mt-8 max-w-[640px] font-mono text-sm leading-[1.7] text-muted sm:text-base">
 				Notes on platform engineering, the seam between front-end and infra,
 				and the unglamorous discipline of making systems boring to operate.
 				The first posts are drafting; subscribe by email if you want a ping

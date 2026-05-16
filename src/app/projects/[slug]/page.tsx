@@ -39,7 +39,7 @@ export default async function ProjectPage({ params }: PageProps) {
 			<SectionEyebrow number="03" label="projects" />
 
 			{isComingSoon && (
-				<p className="mt-6 font-mono text-[11px] uppercase tracking-[0.14em] text-accent">
+				<p className="mt-6 font-mono text-xs uppercase tracking-[0.14em] text-accent">
 					<span aria-hidden="true">[ </span>case study in progress
 					<span aria-hidden="true"> ]</span>
 				</p>
@@ -54,7 +54,7 @@ export default async function ProjectPage({ params }: PageProps) {
 			</h1>
 
 			{(project.subtitle || project.dates) && (
-				<p className="mt-4 font-mono text-[11px] uppercase tracking-[0.08em] text-muted">
+				<p className="mt-4 font-mono text-xs uppercase tracking-[0.08em] text-muted">
 					{project.subtitle}
 					{project.subtitle && project.dates && (
 						<span aria-hidden="true" className="mx-2">
@@ -65,12 +65,12 @@ export default async function ProjectPage({ params }: PageProps) {
 				</p>
 			)}
 
-			<p className="mt-8 max-w-[640px] font-mono text-[13px] leading-[1.7] text-foreground">
+			<p className="mt-8 max-w-[640px] font-mono text-sm leading-[1.7] text-foreground sm:text-base">
 				{project.description}
 			</p>
 
 			{project.body && project.body.length > 0 && (
-				<div className="mt-6 max-w-[640px] space-y-5 font-mono text-[13px] leading-[1.7] text-muted">
+				<div className="mt-6 max-w-[640px] space-y-5 font-mono text-sm leading-[1.7] text-muted sm:text-base">
 					{project.body.map((paragraph, index) => (
 						<p key={index}>{paragraph}</p>
 					))}
@@ -107,8 +107,8 @@ export default async function ProjectPage({ params }: PageProps) {
 			)}
 
 			{isComingSoon && (
-				<div className="mt-16 border-t border-border pt-8 max-w-[640px]">
-					<p className="font-mono text-[12px] leading-[1.7] text-muted">
+				<div className="mt-16 max-w-[640px] border-t border-border pt-8">
+					<p className="font-mono text-sm leading-[1.7] text-muted">
 						Detailed writeup in progress &mdash; screenshots, architecture
 						notes, lessons learned from production. In the meantime, ask
 						me about it:{" "}

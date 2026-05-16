@@ -29,7 +29,7 @@ export default function Hero() {
 					<span className="block">anwer</span>
 				</h1>
 
-				<p className="mt-10 max-w-[92%] font-mono text-[13px] leading-[1.65] text-muted sm:max-w-[640px] sm:text-sm">
+				<p className="mt-10 max-w-[640px] font-mono text-sm leading-[1.7] text-muted sm:text-base">
 					Senior software engineer in{" "}
 					<span className="text-foreground">Wellington, NZ</span>. Eleven
 					years building enterprise web apps in Node, .NET, React, Vue.
@@ -57,7 +57,7 @@ export default function Hero() {
 				</ul>
 			</div>
 
-			<p className="mt-12 font-mono text-[10px] uppercase tracking-[0.14em] text-muted/70">
+			<p className="mt-12 font-mono text-xs uppercase tracking-[0.14em] text-muted/70">
 				<span aria-hidden="true">↓</span> scroll, or use the sidebar
 			</p>
 		</section>

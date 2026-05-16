@@ -29,7 +29,7 @@ export default async function Photography() {
 				photography
 			</h1>
 
-			<p className="mt-8 max-w-[640px] font-mono text-xs leading-[1.7] text-muted sm:text-[13px]">
+			<p className="mt-8 max-w-[640px] font-mono text-sm leading-[1.7] text-muted sm:text-base">
 				Streets, mountains, and what shows up in front of the camera between
 				them. Mostly Wellington, sometimes elsewhere. Shot on a mix of
 				digital and film.
@@ -50,7 +50,7 @@ export default async function Photography() {
 					</span>{" "}
 					if you shoot too
 				</p>
-				<p className="mt-4 max-w-xl font-mono text-[13px] leading-[1.7] text-foreground">
+				<p className="mt-4 max-w-xl font-mono text-sm leading-[1.7] text-foreground sm:text-base">
 					Pixxellent is the digital asset platform I&rsquo;m building for
 					high-resolution work. The contributor side is live in private
 					beta; the public-facing site is coming.

@@ -28,7 +28,7 @@ export default function SidebarContent({
 				<Link
 					href="/"
 					onClick={onNavigate}
-					className="block font-sans text-[15px] font-extrabold leading-[1.1] tracking-tight text-foreground"
+					className="block font-sans text-base font-extrabold leading-[1.1] tracking-tight text-foreground"
 				>
 					{NAME_LINES.map((line) => (
 						<span key={line} className="block">
@@ -36,19 +36,19 @@ export default function SidebarContent({
 						</span>
 					))}
 				</Link>
-				<p className="mt-3 font-mono text-[10px] lowercase tracking-[0.08em] text-muted">
+				<p className="mt-3 font-mono text-[11px] lowercase tracking-[0.08em] text-muted">
 					{ROLE_LINE}
 				</p>
-				<p className="font-mono text-[10px] lowercase tracking-[0.08em] text-muted">
+				<p className="font-mono text-[11px] lowercase tracking-[0.08em] text-muted">
 					{LOCATION_LINE}
 				</p>
 			</div>
 
 			<nav aria-label="Sections" className="mt-12">
-				<p className="font-mono text-[9px] uppercase tracking-[0.14em] text-muted/70">
+				<p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted/70">
 					menu
 				</p>
-				<ul className="mt-3 space-y-1.5">
+				<ul className="mt-3 space-y-2">
 					{MENU.map((item) => {
 						const isActive = activeLabel === item.label;
 						const ariaCurrent =
@@ -63,7 +63,7 @@ export default function SidebarContent({
 									href={item.href}
 									onClick={onNavigate}
 									aria-current={ariaCurrent}
-									className={`group flex items-center gap-1.5 font-mono text-[11px] tracking-tight transition-colors duration-200 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent motion-reduce:transition-none ${
+									className={`group flex items-center gap-2 font-mono text-sm tracking-tight transition-colors duration-200 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent motion-reduce:transition-none ${
 										isActive ? "text-foreground" : "text-muted"
 									}`}
 								>
@@ -79,7 +79,7 @@ export default function SidebarContent({
 									{item.soon && (
 										<span
 											aria-label="coming soon"
-											className="ml-auto font-mono text-[8px] uppercase tracking-[0.18em] text-accent"
+											className="ml-auto font-mono text-[10px] uppercase tracking-[0.18em] text-accent"
 										>
 											soon
 										</span>
@@ -92,10 +92,10 @@ export default function SidebarContent({
 			</nav>
 
 			<nav aria-label="Social" className="mt-10">
-				<p className="font-mono text-[9px] uppercase tracking-[0.14em] text-muted/70">
+				<p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted/70">
 					social
 				</p>
-				<ul className="mt-3 space-y-1.5">
+				<ul className="mt-3 space-y-2">
 					{SOCIAL.map((item) => (
 						<li key={item.label}>
 							<a
@@ -103,7 +103,7 @@ export default function SidebarContent({
 								target="_blank"
 								rel="noopener noreferrer"
 								onClick={onNavigate}
-								className="flex items-center gap-1.5 font-mono text-[11px] tracking-tight text-muted transition-colors duration-200 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent motion-reduce:transition-none"
+								className="flex items-center gap-2 font-mono text-sm tracking-tight text-muted transition-colors duration-200 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent motion-reduce:transition-none"
 							>
 								<span aria-hidden="true" className="inline-block w-3 opacity-0">
 									→
@@ -117,19 +117,19 @@ export default function SidebarContent({
 
 			<div className="mt-auto space-y-4 pt-10">
 				<div>
-					<p className="font-mono text-[9px] uppercase tracking-[0.14em] text-muted/70">
+					<p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted/70">
 						contact
 					</p>
 					<a
 						href={`mailto:${CONTACT_EMAIL}`}
 						onClick={onNavigate}
-						className="mt-2 inline-block font-mono text-[11px] tracking-tight text-foreground transition-colors duration-200 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent motion-reduce:transition-none"
+						className="mt-2 inline-block font-mono text-[13px] tracking-tight text-foreground transition-colors duration-200 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent motion-reduce:transition-none"
 					>
 						{CONTACT_EMAIL}
 					</a>
 				</div>
 				<div className="flex items-center justify-between border-t border-border pt-3">
-					<span className="font-mono text-[9px] uppercase tracking-[0.14em] text-muted/70">
+					<span className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted/70">
 						theme
 					</span>
 					<ThemeToggle />

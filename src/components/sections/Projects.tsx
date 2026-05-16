@@ -34,20 +34,20 @@ export default function Projects() {
 							className="group block border-t border-border py-8 pl-0 transition-[padding] duration-300 ease-out hover:pl-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent motion-reduce:transition-none"
 						>
 							<div className="flex items-start justify-between gap-4">
-								<span className="font-mono text-[10px] uppercase tracking-[0.1em] text-accent">
+								<span className="font-mono text-xs uppercase tracking-[0.1em] text-accent">
 									_{String(index + 1).padStart(2, "0")}
 								</span>
 								<Icon
 									icon={ArrowUpRight}
-									size={14}
+									size={16}
 									aria-hidden="true"
 									className="shrink-0 text-muted transition-all duration-300 ease-out group-hover:-translate-y-[2px] group-hover:translate-x-[2px] group-hover:text-accent motion-reduce:transition-none"
 								/>
 							</div>
-							<h3 className="mt-2 text-[22px] font-semibold tracking-[-0.02em] text-foreground">
+							<h3 className="mt-2 text-2xl font-semibold tracking-[-0.02em] text-foreground">
 								{project.title}
 							</h3>
-							<p className="mt-2 max-w-[680px] font-mono text-[11px] leading-[1.6] text-muted">
+							<p className="mt-3 max-w-[680px] font-mono text-sm leading-[1.65] text-muted">
 								{project.description}
 							</p>
 							<ul className="mt-4 flex flex-wrap gap-1.5">
@@ -62,7 +62,7 @@ export default function Projects() {
 				))}
 			</ol>
 
-			<p className="mt-6 font-mono text-[10px] uppercase tracking-[0.14em] text-muted/70">
+			<p className="mt-8 font-mono text-xs uppercase tracking-[0.14em] text-muted/70">
 				<span aria-hidden="true">_</span> more projects landing through 2026
 			</p>
 		</section>

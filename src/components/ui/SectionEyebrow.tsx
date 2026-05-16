@@ -8,7 +8,7 @@ export default function SectionEyebrow({
 	label,
 }: SectionEyebrowProps) {
 	return (
-		<p className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
+		<p className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-muted">
 			<span aria-hidden="true" className="text-accent">
 				_{number}
 			</span>
