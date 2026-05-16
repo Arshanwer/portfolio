@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "@/styles/globals.css";
 import Sidebar from "@/components/layout/Sidebar";
 import MobileNav from "@/components/layout/MobileNav";
+import RevealObserver from "@/components/ui/RevealObserver";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -46,6 +47,7 @@ export default function RootLayout({
                   document.documentElement.classList.remove('dark');
                 }
               } catch {}
+              document.documentElement.classList.add('js-on');
             `,
 					}}
 				/>
@@ -66,6 +68,7 @@ export default function RootLayout({
 						{children}
 					</main>
 				</div>
+				<RevealObserver />
 			</body>
 		</html>
 	);

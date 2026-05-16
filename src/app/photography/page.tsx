@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import Icon from "@/components/Icon";
 import PhotographyGallery from "@/components/PhotographyGallery";
+import SectionEyebrow from "@/components/ui/SectionEyebrow";
 import { fetchPhotos } from "@/lib/cloudinary";
 
 export const metadata = {
@@ -17,17 +18,22 @@ export default async function Photography() {
 		<section
 			id="photography"
 			aria-labelledby="photography-heading"
-			className="mx-auto max-w-5xl px-6 py-20 sm:px-8 sm:py-24 lg:px-12 lg:py-28"
+			className="px-6 pt-20 pb-24 sm:px-10 sm:pt-24 sm:pb-28 lg:px-16 lg:pt-28"
 		>
+			<SectionEyebrow number="05" label="photography" />
+
 			<h1
 				id="photography-heading"
-				className="font-sans text-display-section font-extrabold leading-[0.95] tracking-tight text-foreground"
+				className="mt-6 font-sans text-[clamp(40px,8vw,80px)] font-extrabold uppercase leading-[0.92] tracking-[-0.04em] text-foreground"
 			>
-				<span aria-hidden="true" className="text-accent">
-					#
-				</span>
 				photography
 			</h1>
+
+			<p className="mt-8 max-w-[640px] font-mono text-xs leading-[1.7] text-muted sm:text-[13px]">
+				Streets, mountains, and what shows up in front of the camera between
+				them. Mostly Wellington, sometimes elsewhere. Shot on a mix of
+				digital and film.
+			</p>
 
 			{photos.length === 0 ? (
 				<p className="mt-12 font-mono text-sm text-muted sm:mt-16">
@@ -44,10 +50,10 @@ export default async function Photography() {
 					</span>{" "}
 					if you shoot too
 				</p>
-				<p className="mt-4 max-w-xl text-base leading-relaxed text-foreground sm:text-[15px]">
-					Pixxellent is the digital asset platform I&rsquo;m building
-					for high-resolution work. The contributor side is live in
-					private beta; the public-facing site is coming.
+				<p className="mt-4 max-w-xl font-mono text-[13px] leading-[1.7] text-foreground">
+					Pixxellent is the digital asset platform I&rsquo;m building for
+					high-resolution work. The contributor side is live in private
+					beta; the public-facing site is coming.
 				</p>
 				<p className="mt-6">
 					<a

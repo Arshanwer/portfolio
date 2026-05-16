@@ -102,15 +102,17 @@ section[id] {
 	}
 }
 
-/* Section fade-in on scroll — applied via RevealOnScroll wrapper */
-.reveal-on-scroll {
+/* Section fade-in on scroll — scoped to `.js-on` so a JS-disabled client
+   still sees the content. The js-on class is added by the inline boot
+   script in layout.tsx; RevealObserver flips `is-visible` on intersect. */
+.js-on .reveal-on-scroll {
 	opacity: 0;
 	transform: translateY(28px);
 	transition: opacity 0.7s ease-out, transform 0.7s ease-out;
 	will-change: opacity, transform;
 }
 
-.reveal-on-scroll.is-visible {
+.js-on .reveal-on-scroll.is-visible {
 	opacity: 1;
 	transform: none;
 }
@@ -120,7 +122,7 @@ section[id] {
 		animation: none;
 	}
 
-	.reveal-on-scroll {
+	.js-on .reveal-on-scroll {
 		opacity: 1;
 		transform: none;
 		transition: none;
