@@ -1,6 +1,12 @@
-# Design Direction — v2
+# Design Direction — v3
 
 Canonical specification for the visual system. Source of truth for palette, typography, layout patterns, and what we've explicitly rejected. When code disagrees with this file, the code is wrong.
+
+## v2 → v3 — what changed
+
+v2 anchored long-form content (Hero, About, Experience) inside a centered `max-w-5xl` column and pushed Header / Footer chrome to viewport edges. v3 replaces that chrome with a **180px sticky left sidebar** that persists across all routes, carries menu / social / contact / theme, and tracks the active home-page section via scroll position.
+
+What's kept from v2 (still locked): the palette, the Geist Mono base voice + Geist Sans heavy display moments, the no-headshot rule, the "one accent doing real work" discipline, and the motion philosophy. Only the chrome shifted.
 
 ## References
 
@@ -60,6 +66,8 @@ Geist Mono is the **default voice**. Geist Sans heavy interrupts it intentionall
 
 ## Layout patterns
 
+**Sticky left sidebar (v3, current).** 180px sticky aside on the left edge, full viewport height, right border `0.5px solid var(--border)`. Carries: name (two lines, Geist Sans 800), role + location (mono 10px muted), MENU nav (with `→` accent prefix on the active item), SOCIAL, CONTACT email at the bottom, theme toggle. Persists across all routes. Active state on `/` is scroll-driven (IntersectionObserver, ~40% from viewport top); on dedicated routes it's pathname-driven. Mobile (<768px) collapses to a 48px sticky top bar with a slide-out drawer rendering the same content. The earlier v2 pattern (centered `max-w-5xl` + chrome at viewport edges) is superseded.
+
 **No headshot anywhere.** The home hero is filled by oversized typography. A face on the page would override every typographic decision and pull the site toward generic agency aesthetic. This is a hard rule, not a preference.
 
 **Mono-leaning base.** Body, nav, labels, dates, captions all default to Geist Mono. This is the engineer-voice baseline. Geist Sans heavy is the deliberate interruption.
@@ -77,12 +85,14 @@ Don't sprinkle. If two unrelated things on the same view are both using accent, 
 
 - Dot grids (small fields used as spatial anchors near hero or section breaks)
 - Bracket frames (`[ ]` around emphasis blocks, callouts)
-- `#section` heading prefixes (Geist Mono `#` before section labels)
+- Section eyebrow prefixes — either `#section` or `_NN section` (numbered, co-equal). The numbered form is used on the home page (`_01 hello` … `_06 thoughts`) so the sidebar can mirror the scroll position; the `#` form remains valid on standalone routes.
 - Monospace caret accent (`|` blinking or static, at most once per page)
 
 Rule: at most two distinct decorative patterns visible together. Never all four.
 
 **Motion — purposeful only.** Scroll-triggered fade-ins on section entry, hover states on nav and cards, subtle page transitions. No parallax, no decorative animation, no particle effects, no entrance choreography.
+
+**Live status indicators may pulse subtly** (at most one per page) — these communicate real-world state (e.g. availability) rather than serve decoration. The pulse must be a continuous, low-amplitude ring expansion and must freeze under `prefers-reduced-motion: reduce`.
 
 **Mobile-first.** Verify at 375 / 768 / 1280. The hero display type must stay confident at 375 — don't shrink it into ordinariness; let it overhang or rebalance to two lines if needed.
 
@@ -90,14 +100,14 @@ Rule: at most two distinct decorative patterns visible together. Never all four.
 
 ## Information architecture
 
-Multi-page from the start:
+Multi-page, sidebar-persistent:
 
-- `/` — Home: hero, About, Experience timeline, contact strip, footer.
-- `/work` — Projects index. Pixxellent featured, room for future cards.
-- `/work/pixxellent` — Long-form case study (problem, approach, stack, screenshots, live link).
-- `/photography` — Masonry / mixed-aspect gallery.
+- `/` — Home: scrolling editorial document with numbered sections `_01 hello` (hero, with bio folded in), `_02 work` (timeline), `_03 projects` (linking out to case studies), `_04 stack`, `_05 photography` (teaser), `_06 thoughts` (teaser).
+- `/projects/[slug]` — Long-form case studies. Dynamic route with a coming-soon template until each writeup is published (`status: 'coming-soon' | 'published'` per entry in `src/data/projects.ts`).
+- `/photography` — Full masonry gallery (Cloudinary-backed).
+- `/thoughts` — Blog landing. Coming-soon for v1; becomes the listing once posts ship.
 
-Future-ready (don't build yet): `/writing`, additional `/work/[slug]` entries.
+Superseded: the `/work` and `/work/[slug]` routes from v2. Pixxellent moved to `/projects/pixxellent`.
 
 ## What we explicitly rejected — Direction A (editorial dossier)
 
@@ -107,8 +117,9 @@ Future-ready (don't build yet): `/writing`, additional `/work/[slug]` entries.
 
 - Serif at masthead scale read magazine-coded, not modern-engineer.
 - Dark navy + amber felt cold and corporate, missing the warmth the references called for.
-- Sticky-sidebar pattern locked the site into one rhythm — hard to host distinct page types (case study, gallery) without feeling like the same template recycled.
 - Overall too formal and classical for the engineer-with-personality positioning.
+
+(An earlier note here flagged the sticky sidebar itself as problematic. On closer reading the "template recycling" risk came from the *full package* — serif + dark navy + amber + sidebar — not from the sidebar in isolation. v3 reintroduces the sidebar paired with the warm v2 palette and the Geist Mono + Geist Sans heavy type stack, and it reads as engineering-editorial rather than agency-formal.)
 
 **Disposition:** archived on branch `archive/direction-a-editorial` (HEAD at `74766b7`). Recoverable, not deleted.
 
