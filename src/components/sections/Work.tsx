@@ -24,42 +24,46 @@ export default function Work() {
 				{WORK.map((item, index) => (
 					<li
 						key={item.id}
-						className={index === WORK.length - 1 ? "border-b border-border" : ""}
+						className={
+							index === WORK.length - 1 ? "border-b border-border" : ""
+						}
 					>
-						<a
-							href={RESUME_URL}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="group block border-t border-border py-7 pl-0 transition-[padding] duration-300 ease-out hover:pl-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent motion-reduce:transition-none"
-						>
-							<div className="flex items-start justify-between gap-4">
-								<span className="font-mono text-[10px] uppercase tracking-[0.04em] text-muted">
-									{item.dates}
-								</span>
-								<Icon
-									icon={ArrowUpRight}
-									size={14}
-									aria-hidden="true"
-									className="shrink-0 text-muted transition-all duration-300 ease-out group-hover:-translate-y-[2px] group-hover:translate-x-[2px] group-hover:text-accent motion-reduce:transition-none"
-								/>
-							</div>
-							<h3 className="mt-2 font-mono text-sm text-foreground">
+						<div className="border-t border-border py-7">
+							<p className="font-mono text-xs uppercase tracking-[0.04em] text-muted">
+								{item.dates}
+							</p>
+							<h3 className="mt-2 font-mono text-[15px] text-foreground">
 								{item.role}
 								<span aria-hidden="true" className="mx-2 text-muted">
 									·
 								</span>
 								<span className="text-muted">{item.company}</span>
 							</h3>
-							<p className="mt-2 max-w-[680px] font-mono text-[11px] leading-[1.55] text-muted">
+							<p className="mt-2 max-w-[680px] font-mono text-sm leading-[1.65] text-muted">
 								{item.description}
 							</p>
-						</a>
+						</div>
 					</li>
 				))}
 			</ol>
 
-			<p className="mt-6 font-mono text-[10px] uppercase tracking-[0.14em] text-muted/70">
-				<span aria-hidden="true">↗</span> rows open the full resume
+			<p className="mt-8">
+				<a
+					href={RESUME_URL}
+					target="_blank"
+					rel="noopener noreferrer"
+					className="group inline-flex items-center gap-1.5 font-mono text-sm tracking-tight text-foreground transition-colors duration-200 hover:text-accent focus-visible:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent motion-reduce:transition-none"
+				>
+					<span className="underline decoration-accent decoration-2 underline-offset-[6px]">
+						view full resume
+					</span>
+					<Icon
+						icon={ArrowUpRight}
+						size={14}
+						aria-hidden="true"
+						className="text-accent transition-transform duration-200 ease-out group-hover:-translate-y-[1px] group-hover:translate-x-[1px] motion-reduce:transition-none"
+					/>
+				</a>
 			</p>
 		</section>
 	);
