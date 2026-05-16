@@ -1,5 +1,13 @@
 # Progress
 
+## v3 Build Chunks (current)
+
+Branch: `design-revamp-v3` (cut from clean `main`). Plan file: `~/.claude/plans/read-this-brief-then-swift-stroustrup.md`.
+
+1. ✅ **PR 1 — Layout shell + Hero + design-direction.md v3 bump** — `554517c`. Sticky 180px sidebar (Sidebar/SidebarContent) + mobile top bar/drawer (MobileNav) replace Header/Footer. Numbered `_01 hello` hero with StatusPulse + tech chips, About copy folded into intro. `useActiveSection` IntersectionObserver hook wires scroll-driven active state on home; `usePathname` drives it on dedicated routes. globals.css: `status-pulse` + `reveal-on-scroll` utilities, mobile `scroll-margin-top`, reduced-motion overrides. Chip gains hover (border + color → accent, `-translate-y-[2px]`). Doc: v2 → v3 lead, sidebar pattern endorsed, status-pulse Motion bullet, IA updated to `/projects/[slug]` + `/thoughts`, `_NN` eyebrow as co-equal of `#section`, Direction-A rejection reframed (sidebar critique was about the full package, not the sidebar in isolation). Deleted: `Header.tsx`, `About.tsx`, `Footer.tsx`, old root `Hero.tsx`.
+2. 🟡 **PR 2 — Home sections + `/photography` revamp** — in progress. `_02 work`, `_03 projects`, `_04 stack`, `_05 photography teaser`, `_06 thoughts teaser`. Extract `src/data/{work,projects,stack}.ts`. Build `MasonryGrid` primitive from PhotographyGallery's CSS columns. `RevealOnScroll` wrapper. `/photography` gains the `_05 photography` eyebrow + display headline. Delete `Experience.tsx`, `Contact.tsx`.
+3. 🔲 **PR 3 — `/projects/[slug]` + `/thoughts` routes + responsive/a11y polish** — pending. Coming-soon templates, `generateStaticParams`. Migrate Pixxellent content from `/work` into `data/projects.ts`. Delete `src/app/work/`. Verify all breakpoints in both themes. Lighthouse pass. Final accent audit.
+
 ## v2 Build Chunks
 
 1. ✅ Theme system refit + type scale tokens — `b31a8ff`
@@ -174,7 +182,11 @@
 
 ## Current Status
 
-### Project Phase: **Phase 2 — v2 Visual Rebuild & Site Structure** (in progress — 7 of 10 chunks done; chunk 7 deferred to Phase 4)
+### Project Phase: **v3 Revamp — sticky-sidebar editorial direction** (PR 1 of 3 landed; PR 2 in flight)
+
+v2 visual rebuild (Phase 2, chunks 1–10) is treated as complete-for-purpose — the v3 revamp supersedes the centered-chrome layout while preserving the v2 palette, typography, and Cloudinary integration. The v2 chunk log below is retained for historical context.
+
+### Project Phase (historical): **Phase 2 — v2 Visual Rebuild & Site Structure** (7 of 10 chunks done; chunk 7 deferred to Phase 4)
 
 **Completion Overview**
 
