@@ -1,3 +1,0 @@
-- Allow reading and writing in `src/`, `tests/`.
-- Deny reading and writing to `.env`, `.env.*`, `config/*`.
-- Deny access outside project root.

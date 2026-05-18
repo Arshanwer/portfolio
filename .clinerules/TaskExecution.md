@@ -1,3 +1,0 @@
-- Always start in Plan mode for new tasks.
-- Request confirmation before modifying more than one file.
-- Don't commit any changes to git.
