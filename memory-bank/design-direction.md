@@ -1,12 +1,16 @@
-# Design Direction — v3
+# Design Direction — v4
 
 Canonical specification for the visual system. Source of truth for palette, typography, layout patterns, and what we've explicitly rejected. When code disagrees with this file, the code is wrong.
 
-## v2 → v3 — what changed
+## v3 → v4 — what changed
 
-v2 anchored long-form content (Hero, About, Experience) inside a centered `max-w-5xl` column and pushed Header / Footer chrome to viewport edges. v3 replaces that chrome with a **180px sticky left sidebar** that persists across all routes, carries menu / social / contact / theme, and tracks the active home-page section via scroll position.
+v3 used a **180px sticky left sidebar** for primary nav + identity + social + theme. Live review found that even after dropping the name and bumping the menu, the sidebar still read as heavy chrome for a content-driven portfolio. v4 replaces it with two restrained floating elements: a **top-center nav pill** carrying the six text labels, and a **bottom-right utility pill** carrying social icons + mailto + theme. Both have thin borders, semi-transparent backgrounds, and `backdrop-blur` so content scrolls behind them — chrome whispers, content speaks.
 
-What's kept from v2 (still locked): the palette, the Geist Mono base voice + Geist Sans heavy display moments, the no-headshot rule, the "one accent doing real work" discipline, and the motion philosophy. Only the chrome shifted.
+Reference: [sawad.framer.website](https://sawad.framer.website/) for the floating top-center pill position. Sawad uses icons-only; v4 uses Geist Mono text labels in lowercase to preserve engineer-readability and WCAG AA legibility.
+
+## v2 → v3 — what changed (superseded by v4)
+
+v2 anchored long-form content (Hero, About, Experience) inside a centered `max-w-5xl` column and pushed Header / Footer chrome to viewport edges. v3 replaced that chrome with a 180px sticky left sidebar. Retained for history; the chrome direction is now v4.
 
 ## References
 
@@ -66,7 +70,12 @@ Geist Mono is the **default voice**. Geist Sans heavy interrupts it intentionall
 
 ## Layout patterns
 
-**Sticky left sidebar (v3, current).** 180px sticky aside on the left edge, full viewport height, right border `0.5px solid var(--border)`. Carries: name (two lines, Geist Sans 800), role + location (mono 10px muted), MENU nav (with `→` accent prefix on the active item), SOCIAL, CONTACT email at the bottom, theme toggle. Persists across all routes. Active state on `/` is scroll-driven (IntersectionObserver, ~40% from viewport top); on dedicated routes it's pathname-driven. Mobile (<768px) collapses to a 48px sticky top bar with a slide-out drawer rendering the same content. The earlier v2 pattern (centered `max-w-5xl` + chrome at viewport edges) is superseded.
+**Floating top-center nav pill + bottom-right utility pill (v4, current).** Two restrained floating chrome elements, both pill-shaped (`rounded-full`, thin border on `--border`, `bg-background/80` with `backdrop-blur-md`):
+
+- **TopNavPill** — `fixed left-1/2 top-5 -translate-x-1/2`. Carries the six menu items as Geist Mono lowercase text labels (home, work, projects, stack, photography, thoughts). Active state is accent text color only (no heavy pill background). Active resolution: scroll-driven on `/` via `useActiveSection` IntersectionObserver, pathname-driven on dedicated routes via `resolveActiveLabel` with prefix matching. On `< md` the pill collapses to a single hamburger button that toggles `MobileMenuOverlay` (a sheet containing menu + social + email + theme).
+- **BottomRailPill** — `fixed bottom-5 right-5`. Carries social icons (github, linkedin), a mail icon (mailto), a divider, and the theme toggle. Hidden on `< md` (mobile users get the same controls inside `MobileMenuOverlay`).
+
+Pages reserve top padding (`pt-28` baseline, `pt-32`/`pt-36` at larger breakpoints) to clear the pill on initial load; on scroll, content passes behind the pill's blurred background. Page sections are centered with `mx-auto max-w-6xl` since the sidebar no longer flanks them. The v3 sticky-left-sidebar layout is superseded.
 
 **No headshot anywhere.** The home hero is filled by oversized typography. A face on the page would override every typographic decision and pull the site toward generic agency aesthetic. This is a hard rule, not a preference.
 
