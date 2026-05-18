@@ -35,7 +35,7 @@ export default async function ProjectPage({ params }: PageProps) {
 	const isComingSoon = project.status === "coming-soon";
 
 	return (
-		<article className="px-6 pt-20 pb-24 sm:px-10 sm:pt-24 sm:pb-28 lg:px-16 lg:pt-28">
+		<article className="mx-auto max-w-6xl px-6 pt-28 pb-24 sm:px-10 sm:pt-32 sm:pb-28 lg:px-16 lg:pt-36">
 			<SectionEyebrow number="03" label="projects" />
 
 			{isComingSoon && (

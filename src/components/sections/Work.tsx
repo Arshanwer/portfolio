@@ -9,7 +9,7 @@ export default function Work() {
 		<section
 			id="work"
 			aria-labelledby="work-heading"
-			className="reveal-on-scroll px-6 pt-20 pb-12 sm:px-10 sm:pt-24 sm:pb-16 lg:px-16"
+			className="reveal-on-scroll mx-auto max-w-6xl px-6 pt-20 pb-12 sm:px-10 sm:pt-24 sm:pb-16 lg:px-16"
 		>
 			<SectionEyebrow number="02" label="work" />
 

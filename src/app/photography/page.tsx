@@ -18,7 +18,7 @@ export default async function Photography() {
 		<section
 			id="photography"
 			aria-labelledby="photography-heading"
-			className="px-6 pt-20 pb-24 sm:px-10 sm:pt-24 sm:pb-28 lg:px-16 lg:pt-28"
+			className="mx-auto max-w-6xl px-6 pt-28 pb-24 sm:px-10 sm:pt-32 sm:pb-28 lg:px-16 lg:pt-36"
 		>
 			<SectionEyebrow number="05" label="photography" />
 

@@ -6,7 +6,7 @@ export default function ThoughtsTeaser() {
 		<section
 			id="thoughts"
 			aria-labelledby="thoughts-teaser-heading"
-			className="reveal-on-scroll px-6 pt-12 pb-24 sm:px-10 sm:pt-16 sm:pb-28 lg:px-16"
+			className="reveal-on-scroll mx-auto max-w-6xl px-6 pt-12 pb-24 sm:px-10 sm:pt-16 sm:pb-28 lg:px-16"
 		>
 			<SectionEyebrow number="06" label="thoughts" />
 

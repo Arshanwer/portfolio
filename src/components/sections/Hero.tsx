@@ -1,6 +1,7 @@
 import Chip from "../Chip";
 import SectionEyebrow from "../ui/SectionEyebrow";
 import StatusPulse from "../ui/StatusPulse";
+import { CONTACT_EMAIL } from "@/data/sidebar";
 
 const HERO_CHIPS = [
 	"TypeScript",
@@ -16,7 +17,7 @@ export default function Hero() {
 		<section
 			id="hello"
 			aria-labelledby="hero-heading"
-			className="flex min-h-[85vh] flex-col justify-between px-6 pt-[60px] pb-[50px] sm:px-10 lg:px-16"
+			className="mx-auto flex min-h-[85vh] max-w-6xl flex-col justify-between px-6 pt-24 pb-[50px] sm:px-10 sm:pt-32 lg:px-16 lg:pt-36"
 		>
 			<div>
 				<SectionEyebrow number="01" label="hello" />
@@ -55,10 +56,24 @@ export default function Hero() {
 						</li>
 					))}
 				</ul>
+
+				<p className="mt-8">
+					<a
+						href={`mailto:${CONTACT_EMAIL}`}
+						className="inline-flex items-center gap-2 font-mono text-sm text-foreground transition-colors duration-200 hover:text-accent focus-visible:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent motion-reduce:transition-none sm:text-base"
+					>
+						<span aria-hidden="true" className="text-accent">
+							↘
+						</span>
+						<span className="underline decoration-accent decoration-2 underline-offset-[6px]">
+							{CONTACT_EMAIL}
+						</span>
+					</a>
+				</p>
 			</div>
 
 			<p className="mt-12 font-mono text-xs uppercase tracking-[0.14em] text-muted/70">
-				<span aria-hidden="true">↓</span> scroll, or use the sidebar
+				<span aria-hidden="true">↓</span> scroll, or jump via the top menu
 			</p>
 		</section>
 	);

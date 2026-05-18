@@ -44,7 +44,7 @@ export default function ThemeToggle() {
 		<button
 			onClick={toggleTheme}
 			aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
-			className="inline-flex h-9 w-9 items-center justify-center rounded-sm text-foreground transition-colors duration-200 hover:text-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent motion-reduce:transition-none"
+			className="inline-flex h-9 w-9 items-center justify-center rounded-full text-muted transition-colors duration-200 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent motion-reduce:transition-none"
 		>
 			{isDark ? (
 				<Icon icon={Sun} aria-hidden="true" />

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function ThoughtsPage() {
 	return (
-		<article className="px-6 pt-20 pb-24 sm:px-10 sm:pt-24 sm:pb-28 lg:px-16 lg:pt-28">
+		<article className="mx-auto max-w-6xl px-6 pt-28 pb-24 sm:px-10 sm:pt-32 sm:pb-28 lg:px-16 lg:pt-36">
 			<SectionEyebrow number="06" label="thoughts" />
 
 			<p className="mt-6 font-mono text-xs uppercase tracking-[0.14em] text-accent">

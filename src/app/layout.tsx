@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/styles/globals.css";
-import Sidebar from "@/components/layout/Sidebar";
-import MobileNav from "@/components/layout/MobileNav";
+import TopNavPill from "@/components/layout/TopNavPill";
+import BottomRailPill from "@/components/layout/BottomRailPill";
 import RevealObserver from "@/components/ui/RevealObserver";
 
 const geistSans = Geist({
@@ -61,13 +61,11 @@ export default function RootLayout({
 				>
 					skip to content
 				</a>
-				<MobileNav />
-				<div className="flex min-h-screen">
-					<Sidebar />
-					<main id="main" tabIndex={-1} className="min-w-0 flex-1">
-						{children}
-					</main>
-				</div>
+				<TopNavPill />
+				<main id="main" tabIndex={-1}>
+					{children}
+				</main>
+				<BottomRailPill />
 				<RevealObserver />
 			</body>
 		</html>

@@ -7,7 +7,7 @@ export default function Stack() {
 		<section
 			id="stack"
 			aria-labelledby="stack-heading"
-			className="reveal-on-scroll px-6 pt-12 pb-12 sm:px-10 sm:pt-16 sm:pb-16 lg:px-16"
+			className="reveal-on-scroll mx-auto max-w-6xl px-6 pt-12 pb-12 sm:px-10 sm:pt-16 sm:pb-16 lg:px-16"
 		>
 			<SectionEyebrow number="04" label="stack" />
 
