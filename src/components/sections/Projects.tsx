@@ -47,7 +47,7 @@ export default function Projects() {
 							<h3 className="mt-2 text-2xl font-semibold tracking-[-0.02em] text-foreground">
 								{project.title}
 							</h3>
-							<p className="mt-3 max-w-[680px] font-mono text-sm leading-[1.65] text-muted">
+							<p className="mt-3 max-w-[680px] font-mono text-sm leading-[1.65] text-muted sm:text-base">
 								{project.description}
 							</p>
 							<ul className="mt-4 flex flex-wrap gap-1.5">

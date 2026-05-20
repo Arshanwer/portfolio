@@ -37,6 +37,13 @@ Conventions for writing code in this repo. Agents and humans should consult this
 - Mobile-first: write base styles for mobile, layer `sm:`, `md:`, `lg:` modifiers up.
 - Use `motion-reduce:transition-none` next to any `transition-*` so animations respect `prefers-reduced-motion`.
 
+## Typography conventions
+
+- **Body prose** uses `text-sm sm:text-base` — 14px on mobile (narrow viewport, dense lines), 16px on `sm:` and up. Apply this to every narrative `<p>` (hero intro, section descriptions, project copy, contact intro). Don't ship body prose as flat `text-sm` — desktop expects the bump.
+- **Metadata** (eyebrows, dates, status labels, "coming soon" notes) uses `text-xs` flat, no responsive bump. Vary the look via `tracking-[…]` and `uppercase`, not size.
+- **Chips** use `text-sm` flat (14px). Chips are dense scannable tags; the body's responsive bump doesn't apply.
+- **Interactive CTAs** are a softer pattern: inline action labels (mailto, social, "view full gallery" teaser) sit at flat `text-sm`; primary CTAs on dedicated detail pages (`/photography` Pixxellent link, project-detail external link) scale `text-sm sm:text-base` to match the body around them.
+
 ## Icons
 
 - All icons come through [`src/components/Icon.tsx`](../src/components/Icon.tsx). It wraps `lucide-react` and standardises size and stroke weight.

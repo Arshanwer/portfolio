@@ -39,7 +39,7 @@ export default function Contact() {
 			<p className="mt-10">
 				<a
 					href={`mailto:${CONTACT_EMAIL}`}
-					className="inline-flex items-center gap-3 font-mono text-base text-foreground transition-colors duration-200 hover:text-accent focus-visible:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent motion-reduce:transition-none sm:text-xl"
+					className="inline-flex items-center gap-2 font-mono text-sm text-foreground transition-colors duration-200 hover:text-accent focus-visible:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent motion-reduce:transition-none"
 				>
 					<span aria-hidden="true" className="text-accent">
 						↘

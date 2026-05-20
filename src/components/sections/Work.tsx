@@ -39,7 +39,7 @@ export default function Work() {
 								</span>
 								<span className="text-muted">{item.company}</span>
 							</h3>
-							<p className="mt-2 max-w-[680px] font-mono text-sm leading-[1.65] text-muted">
+							<p className="mt-2 max-w-[680px] font-mono text-sm leading-[1.65] text-muted sm:text-base">
 								{item.description}
 							</p>
 						</div>
