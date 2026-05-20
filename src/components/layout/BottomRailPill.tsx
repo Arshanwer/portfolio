@@ -13,9 +13,9 @@ export default function BottomRailPill() {
 	return (
 		<nav
 			aria-label="Site utility"
-			className="fixed bottom-5 right-5 z-30 hidden md:block"
+			className="fixed bottom-4 right-4 z-30 md:bottom-5 md:right-5"
 		>
-			<ul className="flex items-center gap-0.5 rounded-full border border-border bg-background/80 px-2 py-1.5 shadow-sm backdrop-blur-md">
+			<ul className="flex items-center gap-0.5 rounded-full border border-border bg-surface/90 px-2 py-1.5 shadow-md backdrop-blur-md">
 				{SOCIAL.map((item) => {
 					const IconComp = SOCIAL_ICONS[item.label];
 					if (!IconComp) return null;

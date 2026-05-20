@@ -24,7 +24,7 @@ export default function Stack() {
 						key={category.label}
 						className="flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-6"
 					>
-						<dt className="font-mono text-xs uppercase tracking-[0.1em] text-accent sm:w-[110px] sm:shrink-0 sm:pt-1.5">
+						<dt className="font-mono text-sm uppercase tracking-[0.08em] text-accent sm:w-[120px] sm:shrink-0 sm:pt-1">
 							{category.label}
 						</dt>
 						<dd>

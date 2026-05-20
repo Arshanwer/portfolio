@@ -27,17 +27,18 @@ export const MENU: MenuItem[] = [
 	{ label: "stack", href: "/#stack", sectionId: "stack" },
 	{
 		label: "photography",
-		href: "/photography",
+		href: "/#photography",
 		sectionId: "photography",
 		routeMatch: "/photography",
 	},
 	{
 		label: "thoughts",
-		href: "/thoughts",
+		href: "/#thoughts",
 		sectionId: "thoughts",
 		routeMatch: "/thoughts",
 		soon: true,
 	},
+	{ label: "contact", href: "/#contact", sectionId: "contact" },
 ];
 
 export const SOCIAL: SocialItem[] = [

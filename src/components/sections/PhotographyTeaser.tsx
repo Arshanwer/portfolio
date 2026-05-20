@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import Icon from "../Icon";
-import MasonryGrid from "../ui/MasonryGrid";
 import SectionEyebrow from "../ui/SectionEyebrow";
 import { fetchPhotos } from "@/lib/cloudinary";
 
@@ -26,15 +25,14 @@ export default async function PhotographyTeaser() {
 
 			{photos.length === 0 ? (
 				<p className="mt-10 font-mono text-sm text-muted">
-					{"// gallery wiring up — photos go live once Cloudinary is connected"}
+					{
+						"// gallery wiring up — photos go live once Cloudinary is connected"
+					}
 				</p>
 			) : (
-				<MasonryGrid className="mt-10">
+				<div className="mt-10 columns-1 gap-2 sm:columns-2 lg:columns-3">
 					{photos.map((photo, index) => (
-						<div
-							key={photo.public_id}
-							className="mb-2 break-inside-avoid overflow-hidden border border-transparent transition-[transform,border-color] duration-300 ease-out hover:-translate-y-[3px] hover:border-accent motion-reduce:transition-none"
-						>
+						<div key={photo.public_id} className="mb-2 break-inside-avoid">
 							<Image
 								src={photo.public_id}
 								alt={photo.context?.custom?.alt ?? ""}
@@ -42,13 +40,15 @@ export default async function PhotographyTeaser() {
 								height={photo.height}
 								sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
 								priority={index < 3}
-								placeholder={photo.blurDataURL ? "blur" : "empty"}
+								placeholder={
+									photo.blurDataURL ? "blur" : "empty"
+								}
 								blurDataURL={photo.blurDataURL}
 								className="h-auto w-full"
 							/>
 						</div>
 					))}
-				</MasonryGrid>
+				</div>
 			)}
 
 			<p className="mt-8">

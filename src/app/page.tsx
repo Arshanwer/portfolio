@@ -4,6 +4,7 @@ import Projects from "@/components/sections/Projects";
 import Stack from "@/components/sections/Stack";
 import PhotographyTeaser from "@/components/sections/PhotographyTeaser";
 import ThoughtsTeaser from "@/components/sections/ThoughtsTeaser";
+import Contact from "@/components/sections/Contact";
 
 export default function Home() {
 	return (
@@ -14,6 +15,7 @@ export default function Home() {
 			<Stack />
 			<PhotographyTeaser />
 			<ThoughtsTeaser />
+			<Contact />
 		</>
 	);
 }

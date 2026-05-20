@@ -6,6 +6,7 @@
 	--color-muted: var(--text-muted);
 	--color-border: var(--border);
 	--color-accent: var(--accent);
+	--color-surface: var(--surface);
 
 	--font-sans: var(--font-geist-sans), ui-sans-serif, system-ui,
 		-apple-system, sans-serif;
@@ -22,6 +23,7 @@
 	--text-muted: #5c5c5c;
 	--border: #e8e2d4;
 	--accent: #4d7619;
+	--surface: #ffffff;
 
 	--display-hero: clamp(3.5rem, 14vw, 9rem);
 	--display-section: clamp(2.5rem, 6vw, 4.5rem);
@@ -31,8 +33,9 @@ html.dark {
 	--bg: #0b0b0c;
 	--text: #eaeaea;
 	--text-muted: #888888;
-	--border: #1a1a1c;
+	--border: #2a2a2d;
 	--accent: #b5d827;
+	--surface: #18191b;
 }
 
 html {
