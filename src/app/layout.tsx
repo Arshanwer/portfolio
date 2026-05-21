@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import TopNavPill from "@/components/layout/TopNavPill";
 import BottomRailPill from "@/components/layout/BottomRailPill";
 import RevealObserver from "@/components/ui/RevealObserver";
+import IntroReveal from "@/components/ui/IntroReveal";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -47,6 +48,13 @@ export default function RootLayout({
                   document.documentElement.classList.remove('dark');
                 }
               } catch {}
+              try {
+                if (sessionStorage.getItem('introShown')) {
+                  document.documentElement.classList.add('intro-skip');
+                } else {
+                  sessionStorage.setItem('introShown', '1');
+                }
+              } catch {}
               document.documentElement.classList.add('js-on');
             `,
 					}}
@@ -55,6 +63,7 @@ export default function RootLayout({
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
+				<IntroReveal />
 				<a
 					href="#main"
 					className="sr-only focus-visible:not-sr-only focus-visible:absolute focus-visible:left-4 focus-visible:top-4 focus-visible:z-50 focus-visible:rounded-sm focus-visible:bg-background focus-visible:px-4 focus-visible:py-2 focus-visible:text-sm focus-visible:text-foreground focus-visible:outline-2 focus-visible:outline-accent"

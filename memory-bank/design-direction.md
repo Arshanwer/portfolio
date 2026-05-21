@@ -99,9 +99,11 @@ Don't sprinkle. If two unrelated things on the same view are both using accent, 
 
 Rule: at most two distinct decorative patterns visible together. Never all four.
 
-**Motion — purposeful only.** Scroll-triggered fade-ins on section entry, hover states on nav and cards, subtle page transitions. No parallax, no decorative animation, no particle effects, no entrance choreography.
+**Motion — purposeful only.** Scroll-triggered fade-ins on section entry, hover states on nav and cards, subtle page transitions. No parallax, no decorative animation, no particle effects, no entrance choreography on subsequent loads or on any non-home route.
 
 **Live status indicators may pulse subtly** (at most one per page) — these communicate real-world state (e.g. availability) rather than serve decoration. The pulse must be a continuous, low-amplitude ring expansion and must freeze under `prefers-reduced-motion: reduce`.
+
+**Exception — first-visit-per-session interactive reveal (home only).** On the first visit to `/` in a browser tab, a black greeting overlay shows a large accent-coloured `HELLO.` plus a small "[ click anywhere to enter ]" prompt; click or any keypress triggers a sage-lime tile grid that flips outward from centre to unveil the home page. Gated by `sessionStorage('introShown')` so subsequent loads in the same tab skip it. Under `prefers-reduced-motion: reduce` the greeting still shows but the trigger plays a 250ms opacity fade instead of the tile flip. The greeting hardcodes the dark-theme accent (`#B5D827`) regardless of the user's selected theme — this is the only context where the accent token is overridden, because the greeting bg is always black and the dark-theme value reads more vividly than the light-theme moss. Implementation: `src/components/ui/IntroReveal.tsx` + `.intro-overlay` rules in `globals.css`.
 
 **Mobile-first.** Verify at 375 / 768 / 1280. The hero display type must stay confident at 375 — don't shrink it into ordinariness; let it overhang or rebalance to two lines if needed.
 
