@@ -47,8 +47,8 @@ export default function PhotographyGallery({ photos }: PhotographyGalleryProps) 
 
 	return (
 		<>
-			<div className="mt-12 columns-1 gap-2 sm:mt-16 sm:columns-2 lg:columns-3">
-				{photos.map((photo) => (
+			<div className="mt-12 columns-1 gap-2 sm:columns-2 lg:columns-3 sm:mt-16">
+				{photos.map((photo, index) => (
 					<button
 						key={photo.public_id}
 						type="button"
@@ -59,7 +59,7 @@ export default function PhotographyGallery({ photos }: PhotographyGalleryProps) 
 						aria-label={`Open ${
 							photo.context?.custom?.alt ?? "photograph"
 						} in full size`}
-						className="mb-2 block w-full cursor-zoom-in break-inside-avoid p-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+						className="mb-2 block w-full cursor-zoom-in break-inside-avoid overflow-hidden border border-transparent p-0 transition-[transform,border-color] duration-300 ease-out hover:-translate-y-[3px] hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent motion-reduce:transition-none motion-reduce:hover:translate-y-0"
 					>
 						<Image
 							src={photo.public_id}
@@ -67,6 +67,7 @@ export default function PhotographyGallery({ photos }: PhotographyGalleryProps) 
 							width={photo.width}
 							height={photo.height}
 							sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+							priority={index < 3}
 							placeholder={photo.blurDataURL ? "blur" : "empty"}
 							blurDataURL={photo.blurDataURL}
 							className="h-auto w-full"

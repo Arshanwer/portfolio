@@ -6,6 +6,7 @@
 	--color-muted: var(--text-muted);
 	--color-border: var(--border);
 	--color-accent: var(--accent);
+	--color-surface: var(--surface);
 
 	--font-sans: var(--font-geist-sans), ui-sans-serif, system-ui,
 		-apple-system, sans-serif;
@@ -22,6 +23,7 @@
 	--text-muted: #5c5c5c;
 	--border: #e8e2d4;
 	--accent: #4d7619;
+	--surface: #ffffff;
 
 	--display-hero: clamp(3.5rem, 14vw, 9rem);
 	--display-section: clamp(2.5rem, 6vw, 4.5rem);
@@ -31,8 +33,9 @@ html.dark {
 	--bg: #0b0b0c;
 	--text: #eaeaea;
 	--text-muted: #888888;
-	--border: #1a1a1c;
+	--border: #2a2a2d;
 	--accent: #b5d827;
+	--surface: #18191b;
 }
 
 html {
@@ -57,4 +60,164 @@ body {
 ::selection {
 	background: var(--accent);
 	color: var(--bg);
+}
+
+/* Section anchor offset — clear the mobile top bar (~48px) */
+section[id] {
+	scroll-margin-top: 4rem;
+}
+
+@media (min-width: 768px) {
+	section[id] {
+		scroll-margin-top: 1rem;
+	}
+}
+
+/* Status pulse — exactly one per page, on the availability indicator */
+.status-pulse {
+	position: relative;
+	display: inline-block;
+	width: 6px;
+	height: 6px;
+	border-radius: 9999px;
+	background: var(--accent);
+	flex-shrink: 0;
+}
+
+.status-pulse::after {
+	content: "";
+	position: absolute;
+	inset: -2px;
+	border-radius: 9999px;
+	background: var(--accent);
+	animation: status-pulse 2.6s ease-out infinite;
+	pointer-events: none;
+}
+
+@keyframes status-pulse {
+	0% {
+		transform: scale(0.6);
+		opacity: 0.5;
+	}
+	100% {
+		transform: scale(2.8);
+		opacity: 0;
+	}
+}
+
+/* Section fade-in on scroll — scoped to `.js-on` so a JS-disabled client
+   still sees the content. The js-on class is added by the inline boot
+   script in layout.tsx; RevealObserver flips `is-visible` on intersect. */
+.js-on .reveal-on-scroll {
+	opacity: 0;
+	transform: translateY(28px);
+	transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+	will-change: opacity, transform;
+}
+
+.js-on .reveal-on-scroll.is-visible {
+	opacity: 1;
+	transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.status-pulse::after {
+		animation: none;
+	}
+
+	.js-on .reveal-on-scroll {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
+}
+
+/* Intro reveal — first-visit-per-session greeting + slide-up reveal.
+   Gated by sessionStorage via the inline boot script in layout.tsx. */
+.intro-overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 100;
+	background: #000;
+	overflow: hidden;
+	cursor: pointer;
+	outline: none;
+}
+
+.intro-overlay[data-phase="revealing"] {
+	cursor: default;
+	pointer-events: none;
+	animation: intro-reveal 800ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+.intro-overlay:focus-visible {
+	outline: 2px solid #b5d827;
+	outline-offset: -4px;
+}
+
+.intro-greeting {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 24px;
+	text-align: center;
+	padding: 0 24px;
+}
+
+.intro-hello {
+	margin: 0;
+	font-family: var(--font-geist-sans), sans-serif;
+	font-weight: 800;
+	font-size: clamp(64px, 14vw, 144px);
+	letter-spacing: -0.045em;
+	line-height: 0.9;
+	color: #b5d827;
+}
+
+.intro-prompt {
+	margin: 0;
+	font-family: var(--font-geist-mono), monospace;
+	font-size: 14px;
+	text-transform: lowercase;
+	letter-spacing: 0.14em;
+	color: #888;
+	animation: intro-prompt-pulse 2s ease-in-out infinite;
+}
+
+@keyframes intro-prompt-pulse {
+	0%,
+	100% {
+		opacity: 0.55;
+	}
+	50% {
+		opacity: 1;
+	}
+}
+
+@keyframes intro-reveal {
+	0% {
+		transform: translateY(0);
+	}
+	100% {
+		transform: translateY(-100%);
+	}
+}
+
+html.intro-skip .intro-overlay {
+	display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.intro-prompt {
+		animation: none;
+		opacity: 0.85;
+	}
+	.intro-overlay[data-phase="revealing"] {
+		animation: none;
+		transition: opacity 250ms ease-out;
+		opacity: 0;
+	}
 }

@@ -1,5 +1,34 @@
 # Progress
 
+## v3 Build Chunks (current)
+
+Branch: `design-revamp-v3` (cut from clean `main`). Plan file: `~/.claude/plans/read-this-brief-then-swift-stroustrup.md`.
+
+1. ✅ **PR 1 — Layout shell + Hero + design-direction.md v3 bump** — `554517c`. Sticky 180px sidebar (Sidebar/SidebarContent) + mobile top bar/drawer (MobileNav) replace Header/Footer. Numbered `_01 hello` hero with StatusPulse + tech chips, About copy folded into intro. `useActiveSection` IntersectionObserver hook wires scroll-driven active state on home; `usePathname` drives it on dedicated routes. globals.css: `status-pulse` + `reveal-on-scroll` utilities, mobile `scroll-margin-top`, reduced-motion overrides. Chip gains hover (border + color → accent, `-translate-y-[2px]`). Doc: v2 → v3 lead, sidebar pattern endorsed, status-pulse Motion bullet, IA updated to `/projects/[slug]` + `/thoughts`, `_NN` eyebrow as co-equal of `#section`, Direction-A rejection reframed (sidebar critique was about the full package, not the sidebar in isolation). Deleted: `Header.tsx`, `About.tsx`, `Footer.tsx`, old root `Hero.tsx`.
+2. ✅ **PR 2 — Home sections + `/photography` revamp** — `c43839d`. Built `_02 work` (timeline rows linking to resume), `_03 projects` (numbered `_NN` rows linking to `/projects/[slug]`), `_04 stack` (4 categorised chip rows), `_05 photography teaser` (6-photo masonry + view-full-gallery CTA), `_06 thoughts teaser` (bracket-framed coming-soon linking to `/thoughts`). Extracted `src/data/{work,projects,stack}.ts`. Built `MasonryGrid` primitive and `RevealObserver` client script (mounted in root layout) — fades scoped behind `.js-on` so JS-disabled clients still see content. `/photography` upgraded with `_05` eyebrow + display headline + intro paragraph, lightbox preserved. Deleted `Experience.tsx` and `Contact.tsx`. Note: project rows link to `/projects/pixxellent` which 404s until PR 3 ships.
+3. ✅ **PR 3 — `/projects/[slug]` + `/thoughts` routes, retire `/work`** — `a54b7e7`. Dynamic `/projects/[slug]` with `generateStaticParams` over PROJECTS and a coming-soon variant (bracket frame, subtitle/dates, short + long body, tech chips, live URL, mailto closer). `/thoughts` coming-soon page with bracket frame, display headline, three-paragraph note + email opt-in. Enriched `src/data/projects.ts` with subtitle/dates/body/urlLabel — the prior `/work/page.tsx` Pixxellent body is now sourced from data. Deleted `src/app/work/` entirely. `resolveActiveLabel` deduped into `src/data/sidebar.ts` and switched to prefix matching, so the projects menu item highlights on `/projects/pixxellent`.
+
+## v3 — review follow-ups landed
+
+- ✅ **Readability bump** — `daee532`. Sub-12px Geist Mono was below the practical readable floor. Bumped sidebar menu/social/email 11 → 14px (text-sm), section labels 9 → 11px, eyebrows 10 → 12px, hero intro 13/14 → 14/16px, work/project descriptions 11 → 14px, stack category labels 10 → 12px, hero status pulse + scroll hint 10–11 → 12px, project page body 13 → 14–16px. Hierarchy preserved — each tier just shifted above its readable floor.
+- ✅ **Work CTA simplification** — `494bb0f`. Per-row resume link removed; rows are now plain static cards. A single `↗ view full resume` link sits below the list as the canonical exit point. The repeated per-row hover-shift implied each item had its own deep-link when in reality every row pointed to the same PDF.
+- ✅ **Sidebar identity + menu size** — `ec641e3`. Dropped the bold two-line name from `SidebarContent` (desktop sidebar + mobile drawer) — on home it duplicated the giant hero name, on other routes the role + URL + route headline carry identity. Mobile top bar keeps the inline name as the only persistent identifier when the drawer is closed. Menu + social items bumped from 14 → 16px (text-base) to sit at the conventional nav floor; contact email stays at 13px so it doesn't overflow the 140px sidebar content area.
+
+## v4 pivot — floating pills supersede the sticky sidebar
+
+- ✅ **TopNavPill + BottomRailPill** — `79a4f4d` (code) + `f91aca6` (doc). Replaced the 180px sticky left sidebar with two restrained floating chrome elements. TopNavPill: fixed top-center rounded-full pill with six Geist Mono lowercase text labels, accent-colored active label, scroll-driven on home (`useActiveSection` + `resolveActiveLabel`) and pathname-driven on dedicated routes. Collapses to a hamburger + `MobileMenuOverlay` (centered sheet) on `< md`. BottomRailPill: fixed bottom-right rounded-full pill with github + linkedin + mailto + theme toggle; hidden on `< md` (mobile users get the same controls inside the overlay). Reference: [sawad.framer.website](https://sawad.framer.website/) for the top-center position; text labels chosen over Sawad's icons-only to preserve engineer-readability and WCAG AA. Hero gains an inline `↘ contact@arshadanwer.com` mailto line below the chip row. All home sections + the `/photography`, `/projects/[slug]`, `/thoughts` pages gain `mx-auto max-w-6xl` (sidebar no longer flanks them) and `pt-28`/`pt-32`/`pt-36` to clear the floating pill on initial load. `ThemeToggle` switched to `rounded-full` to sit cleanly inside the bottom-right pill. Deleted `Sidebar.tsx`, `SidebarContent.tsx`, `MobileNav.tsx`. `design-direction.md` bumped v3 → v4 with the new Layout Patterns entry; the v3 entry retained below as superseded.
+
+## Agent + docs scaffold (Claude Code migration)
+
+- ✅ **Cline → Claude Code subagents + canonical docs** — `7cd7012`. Dropped `.clinerules/` entirely (stale: referenced `src/api/`, `UseSwr()`, imgix — none of which exist here). Replaced two stale `memory-bank/` files (`techContext.md`, `systemPatterns.md`) with three new canonical docs under `docs/`: `architecture.md` (stack, file layout, routing map, theme, Cloudinary, env, deploy target), `patterns.md` (naming, server-first, theming, icons, hooks, a11y, commits + a "Known refactor candidates" list of the four code duplication patterns the v4 audit surfaced), `testing.md` (Vitest rationale + install recipe + what-to-test conventions; package not installed per the "additional packages later" direction). Stood up six specialist subagents in `.claude/agents/` — `architect`, `designer`, `dev`, `qa`, `test-writer`, `doc-keeper` — each with a tight least-privilege tool allowlist and a description Claude Code's orchestrator dispatches on. CLAUDE.md rewritten lean (50 lines, the target) — points outward to docs and agents rather than inlining conventions. No product code touched. Build + lint stay clean.
+
+## v3 — open follow-ups (not blocking ship)
+
+- Lighthouse pass on `/` and `/photography` — target ≥95 on Perf, A11y, Best Practices, SEO. Not yet measured.
+- Systematic breakpoint sweep at 375 / 768 / 1024 / 1280 / 1920 in both themes across all four routes. PR 1 / PR 3 spot-checks at 375, 820, 1440 looked clean but a full pass remains.
+- Hero status text reads "currently at totara — open to remote conversations" — placeholder, easy swap if/when the messaging should change.
+- `/work` was deleted; the previous v2 had no public inbound links to it, so no redirect was added. If any external link surfaces, add a `redirects` entry in `next.config.ts` pointing `/work` → `/projects` (and `/work/pixxellent` → `/projects/pixxellent`).
+
 ## v2 Build Chunks
 
 1. ✅ Theme system refit + type scale tokens — `b31a8ff`
@@ -174,7 +203,11 @@
 
 ## Current Status
 
-### Project Phase: **Phase 2 — v2 Visual Rebuild & Site Structure** (in progress — 7 of 10 chunks done; chunk 7 deferred to Phase 4)
+### Project Phase: **v3 Revamp — sticky-sidebar editorial direction** (PR 1 of 3 landed; PR 2 in flight)
+
+v2 visual rebuild (Phase 2, chunks 1–10) is treated as complete-for-purpose — the v3 revamp supersedes the centered-chrome layout while preserving the v2 palette, typography, and Cloudinary integration. The v2 chunk log below is retained for historical context.
+
+### Project Phase (historical): **Phase 2 — v2 Visual Rebuild & Site Structure** (7 of 10 chunks done; chunk 7 deferred to Phase 4)
 
 **Completion Overview**
 
