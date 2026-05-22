@@ -16,51 +16,44 @@ export default function Hero() {
 		<section
 			id="hello"
 			aria-labelledby="hero-heading"
-			className="mx-auto flex min-h-[85vh] max-w-6xl flex-col justify-between px-6 pt-24 pb-[50px] sm:px-10 sm:pt-32 lg:px-16 lg:pt-36"
+			className="mx-auto max-w-6xl px-6 pt-24 pb-16 sm:px-10 sm:pt-32 sm:pb-20 lg:px-16 lg:pt-36"
 		>
-			<div>
-				<SectionEyebrow number="01" label="hello" />
+			<SectionEyebrow number="01" label="hello" />
 
-				<h1
-					id="hero-heading"
-					className="mt-10 font-sans text-display-hero font-extrabold uppercase leading-[0.88] tracking-[-0.045em] text-foreground"
-				>
-					<span className="block">arshad</span>
-					<span className="block">anwer</span>
-				</h1>
+			<h1
+				id="hero-heading"
+				className="mt-10 font-sans text-display-hero font-extrabold uppercase leading-[0.88] tracking-[-0.045em] text-foreground"
+			>
+				<span className="block">arshad</span>
+				<span className="block">anwer</span>
+			</h1>
 
-				<p className="mt-10 max-w-[640px] font-mono text-sm leading-[1.7] text-muted sm:text-base">
-					Senior software engineer in{" "}
-					<span className="text-foreground">Wellington, NZ</span>.
-					Eleven years building enterprise web apps in Node, .NET,
-					React, Vue. Lately the{" "}
-					<span className="text-foreground">infrastructure</span> they
-					run on too &mdash; AWS with Terraform and Ansible, GitHub
-					Actions pipelines, internal CLI tools that replace brittle
-					legacy scripts. The instinct hasn&rsquo;t really changed:{" "}
-					<span className="text-foreground">
-						build it properly, then make it dull to run
-					</span>
-					.
-				</p>
+			<p className="mt-10 max-w-[640px] font-mono text-sm leading-[1.7] text-muted sm:text-base">
+				Senior software engineer in{" "}
+				<span className="text-foreground">Wellington, NZ</span>.
+				Eleven years building enterprise web apps in Node, .NET,
+				React, Vue. Lately the{" "}
+				<span className="text-foreground">infrastructure</span> they
+				run on too &mdash; AWS with Terraform and Ansible, GitHub
+				Actions pipelines, internal CLI tools that replace brittle
+				legacy scripts. The instinct hasn&rsquo;t really changed:{" "}
+				<span className="text-foreground">
+					build it properly, then make it dull to run
+				</span>
+				.
+			</p>
 
-				<div className="mt-10">
-					<StatusPulse label="currently at totara" />
-				</div>
-
-				<ul className="mt-8 flex flex-wrap gap-1.5">
-					{HERO_CHIPS.map((label) => (
-						<li key={label}>
-							<Chip>{label}</Chip>
-						</li>
-					))}
-				</ul>
+			<div className="mt-10">
+				<StatusPulse label="currently at totara" />
 			</div>
 
-			<p className="mt-12 font-mono text-xs uppercase tracking-[0.14em] text-muted/70">
-				<span aria-hidden="true">↓</span> scroll, or jump via the top
-				menu
-			</p>
+			<ul className="mt-8 flex flex-wrap gap-1.5">
+				{HERO_CHIPS.map((label) => (
+					<li key={label}>
+						<Chip>{label}</Chip>
+					</li>
+				))}
+			</ul>
 		</section>
 	);
 }
