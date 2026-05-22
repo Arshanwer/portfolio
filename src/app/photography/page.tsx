@@ -12,7 +12,7 @@ export const metadata = {
 export const revalidate = 3600;
 
 export default async function Photography() {
-	const photos = await fetchPhotos();
+	const { photos, nextCursor } = await fetchPhotos({ limit: 12 });
 
 	return (
 		<section
@@ -40,7 +40,10 @@ export default async function Photography() {
 					{"// gallery wiring up — photos go live once Cloudinary is connected"}
 				</p>
 			) : (
-				<PhotographyGallery photos={photos} />
+				<PhotographyGallery
+					initialPhotos={photos}
+					initialCursor={nextCursor}
+				/>
 			)}
 
 			<div className="mt-16 border-t border-border pt-10 sm:mt-20 sm:pt-12">

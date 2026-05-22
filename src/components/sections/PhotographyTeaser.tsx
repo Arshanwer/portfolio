@@ -6,7 +6,7 @@ import SectionEyebrow from "../ui/SectionEyebrow";
 import { fetchPhotos } from "@/lib/cloudinary";
 
 export default async function PhotographyTeaser() {
-	const photos = (await fetchPhotos()).slice(0, 6);
+	const { photos } = await fetchPhotos({ limit: 5 });
 
 	return (
 		<section

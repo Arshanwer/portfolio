@@ -5,17 +5,27 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
 import Icon from "./Icon";
 import type { CloudinaryPhoto } from "@/lib/cloudinary";
+import { loadMorePhotos } from "@/app/photography/actions";
 
 interface PhotographyGalleryProps {
-	photos: CloudinaryPhoto[];
+	initialPhotos: CloudinaryPhoto[];
+	initialCursor: string | null;
 }
 
-export default function PhotographyGallery({ photos }: PhotographyGalleryProps) {
+export default function PhotographyGallery({
+	initialPhotos,
+	initialCursor,
+}: PhotographyGalleryProps) {
+	const [photos, setPhotos] = useState<CloudinaryPhoto[]>(initialPhotos);
+	const [cursor, setCursor] = useState<string | null>(initialCursor);
+	const [loading, setLoading] = useState(false);
 	const [selectedPhoto, setSelectedPhoto] = useState<CloudinaryPhoto | null>(
 		null,
 	);
 	const closeButtonRef = useRef<HTMLButtonElement>(null);
 	const triggerRef = useRef<HTMLButtonElement | null>(null);
+	const sentinelRef = useRef<HTMLDivElement>(null);
+	const inFlightRef = useRef(false);
 
 	const close = useCallback(() => setSelectedPhoto(null), []);
 
@@ -26,7 +36,6 @@ export default function PhotographyGallery({ photos }: PhotographyGalleryProps) 
 			if (e.key === "Escape") {
 				close();
 			} else if (e.key === "Tab") {
-				// Single focusable element — keep focus on close button
 				e.preventDefault();
 				closeButtonRef.current?.focus();
 			}
@@ -44,6 +53,38 @@ export default function PhotographyGallery({ photos }: PhotographyGalleryProps) 
 			triggerRef.current?.focus();
 		};
 	}, [selectedPhoto, close]);
+
+	useEffect(() => {
+		if (!cursor) return;
+		const sentinel = sentinelRef.current;
+		if (!sentinel) return;
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				const entry = entries[0];
+				if (!entry?.isIntersecting) return;
+				if (inFlightRef.current) return;
+				inFlightRef.current = true;
+				setLoading(true);
+				loadMorePhotos(cursor)
+					.then((next) => {
+						setPhotos((prev) => [...prev, ...next.photos]);
+						setCursor(next.nextCursor);
+					})
+					.catch((err) => {
+						console.error("loadMorePhotos failed", err);
+					})
+					.finally(() => {
+						inFlightRef.current = false;
+						setLoading(false);
+					});
+			},
+			{ rootMargin: "400px 0px" },
+		);
+
+		observer.observe(sentinel);
+		return () => observer.disconnect();
+	}, [cursor]);
 
 	return (
 		<>
@@ -76,13 +117,31 @@ export default function PhotographyGallery({ photos }: PhotographyGalleryProps) 
 				))}
 			</div>
 
+			{cursor && (
+				<div
+					ref={sentinelRef}
+					aria-hidden="true"
+					className="h-px"
+				/>
+			)}
+
+			{loading && (
+				<p className="mt-8 text-center font-mono text-xs uppercase tracking-[0.14em] text-muted">
+					loading more&hellip;
+				</p>
+			)}
+
+			{!cursor && photos.length > 0 && (
+				<p className="mt-8 text-center font-mono text-xs uppercase tracking-[0.14em] text-muted/70">
+					<span aria-hidden="true">— </span>end of gallery<span aria-hidden="true"> —</span>
+				</p>
+			)}
+
 			{selectedPhoto && (
 				<div
 					role="dialog"
 					aria-modal="true"
-					aria-label={
-						selectedPhoto.context?.custom?.alt ?? "Photograph"
-					}
+					aria-label={selectedPhoto.context?.custom?.alt ?? "Photograph"}
 					onClick={close}
 					className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 p-4 backdrop-blur-sm sm:p-8"
 				>
@@ -109,9 +168,7 @@ export default function PhotographyGallery({ photos }: PhotographyGalleryProps) 
 							fill
 							sizes="95vw"
 							priority
-							placeholder={
-								selectedPhoto.blurDataURL ? "blur" : "empty"
-							}
+							placeholder={selectedPhoto.blurDataURL ? "blur" : "empty"}
 							blurDataURL={selectedPhoto.blurDataURL}
 							className="object-contain"
 						/>
